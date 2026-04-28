@@ -91,6 +91,22 @@
                 <!-- Map Section -->
                 <div class="panel">
                     <div class="panel-header"><i class="fa-solid fa-map-location-dot"></i> फ़ार्म लोकेशन ट्रैकर (Farm Location Tracker)</div>
+                    <!-- Manual Location Search -->
+                    <div style="padding: 10px 12px; background: #f0f4ff; border-bottom: 1px solid #d0daf5; display: flex; gap: 8px; align-items: center;">
+                        <i class="fa-solid fa-search" style="color: var(--gov-blue); font-size: 13px;"></i>
+                        <input type="text" id="manual-location-input"
+                            placeholder="शहर खोजें (Search city, e.g. Pune, Jaipur...)"
+                            style="flex:1; padding: 7px 10px; border: 1px solid #c5d0ea; border-radius: 4px; font-size: 13px; outline: none;"
+                            onkeypress="if(event.key==='Enter') searchManualLocation()">
+                        <button id="manual-location-btn" onclick="searchManualLocation()"
+                            style="background: var(--gov-blue); color: white; border: none; padding: 7px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; white-space: nowrap;">
+                            <i class="fa-solid fa-location-crosshairs"></i> खोजें
+                        </button>
+                        <button onclick="detectGpsLocation()" title="Use GPS" 
+                            style="background: #388e3c; color: white; border: none; padding: 7px 10px; border-radius: 4px; cursor: pointer; font-size: 13px;">
+                            <i class="fa-solid fa-satellite-dish"></i>
+                        </button>
+                    </div>
                     <div class="panel-body" style="padding: 0;">
                         <div id="farm-map" style="border: none;"></div>
                     </div>
@@ -211,34 +227,66 @@
 
 
                 <div class="panel">
-                    <div class="panel-header">फसल सलाह (Crop Advisories)</div>
-                    <div class="panel-body">
-                        <p style="font-weight:bold; color: #e65100; font-size:13px; margin-bottom:5px;">▲ उच्च जोखिम चेतावनी (High Risk Alert)</p>
-                        <p style="font-size:12px; margin-bottom: 15px; border-bottom: 1px dotted #ccc; padding-bottom:10px;">
-                            पिछले 48 घंटों में अधिक आर्द्रता पाई गई। देरी से बोए गेहूं में पीली रस्ट (कवक संक्रमण) का खतरा।
-                            (High humidity detected. Risk of yellow rust in late-sown wheat.)
-                        </p>
-
-                        <p style="font-weight:bold; color: var(--gov-blue-light); font-size:13px; margin-bottom:5px;">◆
-                            सिंचाई सूचना (Irrigation Notice)</p>
-                        <p style="font-size:12px; margin-bottom: 15px;">
-                            मिट्टी में नमी बनी हुई है। भूजल संरक्षण हेतु सिंचाई स्थगित करें।
-                            (Favorable soil moisture. Postpone irrigation to conserve groundwater.)
-                        </p>
-
-                        <img src="farmer2.png"
-                            alt="Indian woman farmer in wheat field">
+                    <div class="panel-header"><i class="fa-solid fa-robot"></i> AI फसल सलाह (AI Crop Advisory)</div>
+                    <div class="panel-body" id="ai-advisory-panel">
+                        <div id="ai-advisory-content" style="text-align:center; padding: 20px 10px; color: #888;">
+                            <i class="fa-solid fa-satellite-dish" style="font-size:2rem; color: var(--gov-blue); display:block; margin-bottom:10px;"></i>
+                            <div style="font-size:13px; font-weight:600;">स्थान की प्रतीक्षा है</div>
+                            <div style="font-size:11px; margin-top:5px;">(AI farming advice will appear once your location is detected)</div>
+                        </div>
+                        <img src="farmer2.png" id="advisory-farmer-img" alt="Indian woman farmer in wheat field" style="margin-top:10px;">
                     </div>
                 </div>
 
                 <div class="panel">
                     <div class="panel-header">अलर्ट पंजीकरण (Alert Registration)</div>
                     <div class="panel-body">
-                        <form class="gov-form"
-                            onsubmit="event.preventDefault(); alert('पंजीकरण सफल! Registration simulated successfully.');">
-                            <label style="font-size:12px; font-weight:bold;">व्हाट्सऐप अलर्ट प्राप्त करें (Receive WhatsApp Alerts):</label>
-                            <input type="tel" placeholder="मोबाइल नंबर (10 अंक)" pattern="[0-9]{10}" required>
-                            <button type="submit">सब्सक्राइब करें (Subscribe)</button>
+                        <form class="gov-form" id="alert-form" onsubmit="subscribeAlerts(event)">
+                            <div style="margin-bottom: 10px;">
+                                <label style="font-size:12px; font-weight:bold;">मोबाइल नंबर (Mobile Number):</label>
+                                <input type="tel" id="sub-mobile" placeholder="10 अंक (10 digits)" pattern="[0-9]{10}" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                            </div>
+                            
+                            <div style="margin-bottom: 10px;">
+                                <label style="font-size:12px; font-weight:bold;">फसलें (Crops):</label>
+                                <input type="text" id="sub-crops" placeholder="e.g. Wheat, Soybean" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                                <div>
+                                    <label style="font-size:12px; font-weight:bold;">खेत का आकार (Acres):</label>
+                                    <input type="number" id="sub-size" placeholder="e.g. 5" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                </div>
+                                <div>
+                                    <label style="font-size:12px; font-weight:bold;">सिंचाई (Irrigation):</label>
+                                    <select id="sub-irrigation" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        <option value="rainfed">वर्षा आधारित (Rainfed)</option>
+                                        <option value="drip">ड्रिप (Drip)</option>
+                                        <option value="sprinkler">स्प्रिंकलर (Sprinkler)</option>
+                                        <option value="flood">बाढ़ (Flood)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <label style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:4px;">
+                                    <input type="radio" name="sub-lang" value="hi" checked> हिन्दी
+                                </label>
+                                <label style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:4px;">
+                                    <input type="radio" name="sub-lang" value="en"> English
+                                </label>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:8px;">
+                                    <input type="checkbox" id="sub-wa" checked> 
+                                    व्हाट्सऐप अलर्ट प्राप्त करें (Receive WhatsApp Alerts)
+                                </label>
+                            </div>
+
+                            <button type="submit" id="sub-btn" style="width: 100%; background: var(--gov-blue); color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                                सब्सक्राइब करें (Subscribe)
+                            </button>
                         </form>
                     </div>
                 </div>
