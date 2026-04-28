@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषि-उद्यमी - Agricultural Intelligence & Weather Portal</title>
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Top Accessibility Nav -->
+        <div class="top-nav">
+            <div class="top-nav-left">
+                <a href="#">Skip to Main Content</a>
+            </div>
+            <div class="top-nav-right">
+                <a href="#">A-</a>
+                <a href="#">A</a>
+                <a href="#">A+</a>
+                <span style="margin: 0 10px;">|</span>
+                <a href="#">English</a>
+                <a href="#">हिन्दी</a>
+            </div>
+        </div>
+
+        <!-- Main Header (agmarknet-inspired clean centered layout) -->
+        <header class="main-header" style="padding: 12px 25px; border-bottom: 3px solid var(--gov-blue); background: white;">
+            <div class="header-side" style="flex: 0 0 auto; display: flex; align-items: center; gap: 10px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem" style="height: 55px; opacity: 0.85;">
+            </div>
+            <div class="logo-section" style="flex: 1; text-align: center;">
+                <h1 style="font-size: 2.2rem; margin: 0; color: var(--gov-blue); font-weight: 900; letter-spacing: 0.5px;">कृषि-उद्यमी</h1>
+                <div class="subtitle" style="font-size: 1rem; color: #555; font-weight: 600; margin-top: 2px;">Agricultural Intelligence & Weather Portal</div>
+                <div style="font-size: 10px; color: #999; margin-top: 3px; letter-spacing: 0.5px;">कृषि बुद्धिमत्ता एवं मौसम पोर्टल ◈ Abhishek Vishwakarma & Team The Smurfs</div>
+            </div>
+            <div class="header-side" style="flex: 0 0 auto; display: flex; align-items: center;">
+                <i class="fa-solid fa-wheat-awn fa-2x" style="color: var(--gov-saffron);"></i>
+            </div>
+        </header>
+
+        <!-- Primary Menu (bilingual) -->
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="#">मुखपृष्ठ (Home)</a></li>
+                <li><a href="#">मौसम डेटा (Weather)</a></li>
+                <li><a href="#">फसल सलाह (Crop Advisory)</a></li>
+                <li><a href="#">योजनाएं (Schemes)</a></li>
+                <li><a href="#">संपर्क करें (Contact)</a></li>
+            </ul>
+        </nav>
+
+        <!-- News Ticker -->
+        <div class="news-ticker">
+            <div class="ticker-label">ताज़ा अपडेट (LATEST)</div>
+            <marquee behavior="scroll" direction="left" scrollamount="6">
+                ◈ IMD ने मध्य प्रदेश में भारी वर्षा की चेतावनी जारी की। सोयाबीन कटाई 48 घंटे स्थगित करें। (IMD heavy rainfall warning for MP.) |
+                ❖ पीएम-किसान की अगली किस्त सत्यापित खातों में जल्द जमा होगी। (PM-KISAN installment to be processed.) |
+                ⬥ स्मार्ट सिंचाई सब्सिडी के लिए पंजीकरण खुला है। (Registration open for smart irrigation subsidies.) |
+                ◇ गेहूं MSP ₹2,275 प्रति क्विंटल — 5% वृद्धि प्रस्तावित। (Wheat MSP ₹2,275/quintal — 5% hike proposed.) |
+                ❖ e-NAM पोर्टल पर 1,500+ मंडियां जुड़ीं। अपनी फसल ऑनलाइन बेचें। (1,500+ mandis on e-NAM. Sell crops online.) |
+                ◈ उत्तर भारत में लू चेतावनी: तापमान 45°C+ संभव। पशुओं को छाया में रखें। (Heatwave alert: 45°C+ likely in North India.) |
+                ⬥ PMFBY खरीफ 2026 पंजीकरण 15 मई से शुरू। (PMFBY Kharif 2026 registration starts May 15.) |
+                ◇ कुसुम योजना: सोलर पंप पर 60% सब्सिडी — आवेदन की अंतिम तिथि 30 जून। (KUSUM: 60% subsidy on solar pumps — apply by June 30.) |
+                ◈ APMC मंडी: सोयाबीन ₹4,850/क्विंटल, चना ₹5,200/क्विंटल, मक्का ₹2,100/क्विंटल। (APMC: Soybean ₹4,850, Gram ₹5,200, Maize ₹2,100 per quintal.) |
+                ⬥ मृदा स्वास्थ्य कार्ड: इस सप्ताह सभी जिलों में मुफ्त मिट्टी परीक्षण शिविर। (Free soil testing camps in all districts this week.) |
+                ❖ जैविक खेती अपनाने वाले किसानों को ₹50,000/हेक्टेयर प्रोत्साहन। (₹50,000/hectare incentive for organic farming.) |
+                ◇ डीजल सब्सिडी: छोटे किसानों को ₹500/एकड़ की राहत मंजूर। (Diesel subsidy: ₹500/acre relief for small farmers approved.)
+            </marquee>
+        </div>
+
+        <!-- Hero Banner (agmarknet-style clean image with overlay) -->
+        <div style="position: relative; width: 100%; height: 200px; overflow: hidden; border-bottom: 3px solid var(--gov-saffron);">
+            <img src="hero_banner.png" alt="कृषि उपज एवं मंडी (Agricultural Produce & Market)" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); padding: 15px 25px 12px;">
+                <span style="color: white; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">कृषि-उद्यमी ◈ कृषि बुद्धिमत्ता एवं मौसम पोर्टल</span>
+                <span style="color: rgba(255,255,255,0.7); font-size: 12px; margin-left: 15px;">AccuWeather Powered ◈ AI Chatbot ◈ Live Geo-Tracking</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Left Column (Main Data) -->
+            <div class="content-left">
+                <!-- Map Section -->
+                <div class="panel">
+                    <div class="panel-header"><i class="fa-solid fa-map-location-dot"></i> फ़ार्म लोकेशन ट्रैकर (Farm Location Tracker)</div>
+                    <div class="panel-body" style="padding: 0;">
+                        <div id="farm-map" style="border: none;"></div>
+                    </div>
+                </div>
+
+
+
+                <!-- AccuWeather Powered Weather Dashboard -->
+                <div class="panel">
+                    <div class="panel-header"><i class="fa-solid fa-cloud-sun-rain"></i> मौसम इंटेलिजेंस डैशबोर्ड (AccuWeather Live)</div>
+                    <div class="panel-body" id="weather-dashboard">
+                        <!-- Location Banner -->
+                        <div id="weather-location-bar" style="background: linear-gradient(135deg, var(--gov-blue), var(--gov-blue-light)); color: white; padding: 10px 15px; margin: -15px -15px 15px -15px; font-size: 13px; display: flex; justify-content: space-between; align-items: center;">
+                            <span><i class="fa-solid fa-location-dot"></i> <span id="accu-location">स्थान का पता लगाया जा रहा है...</span></span>
+                            <span id="accu-obs-time" style="font-size: 11px; opacity: 0.8;"></span>
+                        </div>
+
+                        <!-- Current Conditions Grid -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                            <!-- Primary Weather -->
+                            <div class="weather-block current-weather" style="text-align: center;">
+                                <h3>वर्तमान मौसम (Current Weather)</h3>
+                                <div id="accu-weather-icon" style="font-size: 2.5rem; margin: 5px 0;">
+                                    <i class="fa-solid fa-spinner fa-spin" style="color: var(--gov-blue);"></i>
+                                </div>
+                                <div class="temperature" id="accu-temp">--°C</div>
+                                <div id="accu-weather-text" style="font-size: 13px; color: #555; margin-bottom: 8px;">Loading...</div>
+                                <div id="accu-realfeel" style="font-size: 12px; color: var(--gov-saffron); font-weight: bold;"></div>
+                            </div>
+
+                            <!-- Detailed Metrics -->
+                            <div class="weather-block">
+                                <h3>विस्तृत माप (Detailed Metrics)</h3>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
+                                    <div><i class="fa-solid fa-droplet" style="color: #1976d2;"></i> आर्द्रता (Humidity)<br><span id="accu-humidity" style="color: var(--gov-blue);">--%</span></div>
+                                    <div><i class="fa-solid fa-wind" style="color: #607d8b;"></i> हवा (Wind)<br><span id="accu-wind" style="color: var(--gov-blue);">-- km/h</span></div>
+                                    <div><i class="fa-solid fa-eye" style="color: #795548;"></i> दृश्यता (Visibility)<br><span id="accu-visibility" style="color: var(--gov-blue);">-- km</span></div>
+                                    <div><i class="fa-solid fa-sun" style="color: #ff9800;"></i> UV सूचकांक (UV Index)<br><span id="accu-uv" style="color: var(--gov-blue);">--</span></div>
+                                    <div><i class="fa-solid fa-temperature-half" style="color: #e91e63;"></i> ओसांक (Dew Point)<br><span id="accu-dewpoint" style="color: var(--gov-blue);">--°C</span></div>
+                                    <div><i class="fa-solid fa-gauge-high" style="color: #9c27b0;"></i> दबाव (Pressure)<br><span id="accu-pressure" style="color: var(--gov-blue);">-- mb</span></div>
+                                    <div><i class="fa-solid fa-cloud" style="color: #90a4ae;"></i> बादल (Cloud Cover)<br><span id="accu-cloud" style="color: var(--gov-blue);">--%</span></div>
+                                    <div><i class="fa-solid fa-cloud-rain" style="color: #2196f3;"></i> वर्षा (Precip 1h)<br><span id="accu-precip" style="color: var(--gov-blue);">-- mm</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Agriculture-Specific Data -->
+                        <div class="weather-block" style="background: #e3f2fd; border-color: var(--gov-blue); margin-bottom: 15px;">
+                            <h3 style="color: var(--gov-blue);"><i class="fa-solid fa-seedling"></i> कृषि मौसम डेटा (Agri-Weather Data)</h3>
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 12px; text-align: center;">
+                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                    <i class="fa-solid fa-water" style="color: #0288d1; font-size: 1.3rem;"></i>
+                                    <div style="margin-top: 4px; color: #555;">वाष्पीकरण<br><span style="font-size:10px;">(Evapotranspiration)</span></div>
+                                    <span id="accu-evap" style="color: var(--gov-blue);">-- mm</span>
+                                </div>
+                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                    <i class="fa-solid fa-solar-panel" style="color: #f57f17; font-size: 1.3rem;"></i>
+                                    <div style="margin-top: 4px; color: #555;">सौर विकिरण<br><span style="font-size:10px;">(Solar Irradiance)</span></div>
+                                    <span id="accu-solar" style="color: var(--gov-blue);">-- W/m²</span>
+                                </div>
+                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                    <i class="fa-solid fa-sun" style="color: #ff6f00; font-size: 1.3rem;"></i>
+                                    <div style="margin-top: 4px; color: #555;">धूप के घंटे<br><span style="font-size:10px;">(Hours of Sun)</span></div>
+                                    <span id="accu-sunhours" style="color: var(--gov-blue);">-- hrs</span>
+                                </div>
+                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                    <i class="fa-solid fa-cloud-showers-heavy" style="color: #1565c0; font-size: 1.3rem;"></i>
+                                    <div style="margin-top: 4px; color: #555;">वर्षा संभावना<br><span style="font-size:10px;">(Rain Probability)</span></div>
+                                    <span id="accu-rainprob" style="color: var(--gov-blue);">--%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5-Day Forecast Table -->
+                        <h3 style="font-size: 14px; color: var(--gov-blue);"><i class="fa-solid fa-calendar-days"></i> 5-दिन का पूर्वानुमान (5-Day Forecast)</h3>
+                        <table class="forecast-table">
+                            <thead>
+                                <tr>
+                                    <th>दिनांक (Date)</th>
+                                    <th>दिन / रात (Day / Night)</th>
+                                    <th>अधि./न्यून. (Max/Min)</th>
+                                    <th>वर्षा % (Rain)</th>
+                                    <th>कृषि सलाह (Advisory)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accu-forecast-body">
+                                <tr><td colspan="5" style="text-align:center; color: #888;"><i class="fa-solid fa-spinner fa-spin"></i> पूर्वानुमान लोड हो रहा है...</td></tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Temperature Trend Chart -->
+                        <div style="margin-top: 15px;">
+                            <h3 style="font-size: 14px; color: var(--gov-blue);"><i class="fa-solid fa-chart-line"></i> 5-दिन तापमान रुझान (Temperature Trend)</h3>
+                            <div style="height: 180px; position: relative;">
+                                <canvas id="tempChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header"><i class="fa-solid fa-chart-area"></i> ऐतिहासिक उपज डेटा - गेहूं (Historical Yield Data - Wheat)</div>
+                    <div class="panel-body">
+                        <div style="height: 250px; position:relative;">
+                            <canvas id="yieldChart"></canvas>
+                        </div>
+                        <p style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">Data shows average yield
+                            पिछले 5 वर्षों में भोपाल जिले की औसत उपज प्रति हेक्टेयर। (Average yield per hectare for the last 5 years in Bhopal District.)</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Right Column (Sidebar) -->
+            <aside class="sidebar">
+
+
+
+                <div class="panel">
+                    <div class="panel-header">फसल सलाह (Crop Advisories)</div>
+                    <div class="panel-body">
+                        <p style="font-weight:bold; color: #e65100; font-size:13px; margin-bottom:5px;">▲ उच्च जोखिम चेतावनी (High Risk Alert)</p>
+                        <p style="font-size:12px; margin-bottom: 15px; border-bottom: 1px dotted #ccc; padding-bottom:10px;">
+                            पिछले 48 घंटों में अधिक आर्द्रता पाई गई। देरी से बोए गेहूं में पीली रस्ट (कवक संक्रमण) का खतरा।
+                            (High humidity detected. Risk of yellow rust in late-sown wheat.)
+                        </p>
+
+                        <p style="font-weight:bold; color: var(--gov-blue-light); font-size:13px; margin-bottom:5px;">◆
+                            सिंचाई सूचना (Irrigation Notice)</p>
+                        <p style="font-size:12px; margin-bottom: 15px;">
+                            मिट्टी में नमी बनी हुई है। भूजल संरक्षण हेतु सिंचाई स्थगित करें।
+                            (Favorable soil moisture. Postpone irrigation to conserve groundwater.)
+                        </p>
+
+                        <img src="farmer2.png"
+                            alt="Indian woman farmer in wheat field">
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">अलर्ट पंजीकरण (Alert Registration)</div>
+                    <div class="panel-body">
+                        <form class="gov-form"
+                            onsubmit="event.preventDefault(); alert('पंजीकरण सफल! Registration simulated successfully.');">
+                            <label style="font-size:12px; font-weight:bold;">व्हाट्सऐप अलर्ट प्राप्त करें (Receive WhatsApp Alerts):</label>
+                            <input type="tel" placeholder="मोबाइल नंबर (10 अंक)" pattern="[0-9]{10}" required>
+                            <button type="submit">सब्सक्राइब करें (Subscribe)</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">हाल के लॉग (Recent Logs)</div>
+                    <div class="panel-body">
+                        <ul class="alerts-list">
+                            <li><span class="time">आज, 08:00 AM</span> वर्षा संभावना 85%। सिंचाई स्थगित करें। (Rain probability 85%. Delay irrigation.)</li>
+                            <li class="critical"><span class="time">कल, 18:30 PM</span> रात में तेज़ हवा की संभावना। उपकरण सुरक्षित करें। (High winds expected. Secure equipment.)</li>
+                            <li><span class="time">23 अप्रैल, 06:15 AM</span> सोयाबीन की कीमत APMC मंडी में साप्ताहिक उच्चतम। (Soybean prices reached weekly high.)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </aside>
+        </main>
+
+        <!-- Half Page News & Schemes Section -->
+        <div class="half-page-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 30px 20px 30px;">
+            <!-- Regional News -->
+            <div class="panel" id="regional-news-panel" style="margin: 0; height: 100%;">
+                <div class="panel-header" id="regional-news-header" style="font-size: 16px; padding: 15px;">क्षेत्रीय समाचार (Madhya Pradesh)</div>
+                <div class="panel-body yojana-viewport"
+                    style="background-color: var(--content-bg); height: 33vh; padding: 0; overflow: hidden;">
+                    <div class="yojana-scroller" id="regional-news-scroller">
+                        <ul id="regional-news-list" style="list-style: none; padding: 10px 15px; margin: 0;">
+                            <li class="yojana-item">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Fetching real-time news updates...
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yojana Portal -->
+            <div class="panel" id="yojana-panel" style="margin: 0; height: 100%;">
+                <div class="panel-header" style="font-size: 16px; padding: 15px;">Yojana Portal (Live Government Schemes)</div>
+                <div class="panel-body yojana-viewport"
+                    style="background-color: var(--content-bg); height: 33vh; padding: 0; overflow: hidden;">
+                    <div class="yojana-scroller" id="yojana-scroller">
+                        <ul id="yojana-list" style="list-style: none; padding: 10px 15px; margin: 0;">
+                            <li class="yojana-item">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Fetching real-time scheme updates...
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer (agmarknet.gov.in pattern) -->
+        <footer style="background: #1565c0 url('data:image/svg+xml,\
+            <svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22>\
+            <path d=%22M50 0C55 20 70 40 50 60C30 80 10 60 0 80%22 stroke=%22rgba(255,255,255,0.06)%22 fill=%22none%22 stroke-width=%222%22/>\
+            <path d=%22M150 20C160 40 180 50 160 70C140 90 120 80 110 100%22 stroke=%22rgba(255,255,255,0.06)%22 fill=%22none%22 stroke-width=%222%22/>\
+            <circle cx=%2230%22 cy=%22140%22 r=%2215%22 stroke=%22rgba(255,255,255,0.04)%22 fill=%22none%22 stroke-width=%221.5%22/>\
+            <circle cx=%22170%22 cy=%22160%22 r=%2220%22 stroke=%22rgba(255,255,255,0.04)%22 fill=%22none%22 stroke-width=%221.5%22/>\
+            <path d=%22M80 120C90 100 110 110 120 130C130 150 100 160 90 180%22 stroke=%22rgba(255,255,255,0.05)%22 fill=%22none%22 stroke-width=%222%22/>\
+            </svg>'); color: white; padding: 0;">
+
+            <!-- Main Footer Grid -->
+            <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 25px; padding: 28px 30px 22px;">
+
+                <!-- Col 1: Branding & Social -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <i class="fa-solid fa-wheat-awn" style="font-size: 2.4rem; color: #fff;"></i>
+                        <div>
+                            <div style="font-size: 15px; font-weight: bold;">कृषि-उद्यमी</div>
+                            <div style="font-size: 11px; opacity: 0.85;">Agricultural Intelligence & Weather Portal</div>
+                            <div style="font-size: 10px; opacity: 0.7;">Made by Abhishek Vishwakarma & Team The Smurfs</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 12px; margin-bottom: 10px; opacity: 0.9;">
+                        <div><i class="fa-solid fa-phone" style="width: 16px;"></i> +91 9302997410</div>
+                    </div>
+                    <!-- Social Icons Row -->
+                    <div style="display: flex; gap: 12px; margin-top: 10px;">
+                        <a href="https://twitter.com/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://youtube.com/@azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://github.com/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com/in/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Useful Links -->
+                <div>
+                    <div style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">उपयोगी लिंक (USEFUL LINKS)</div>
+                    <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2.3;">
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">हमारे बारे में (About Us)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">संपर्क करें (Contact Us)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">पहुँच (Accessibility)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">प्रतिक्रिया (Feedback)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Quick Links -->
+                <div>
+                    <div style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">त्वरित लिंक (QUICK LINKS)</div>
+                    <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2.3;">
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">वेबसाइट नीति (Website Policy)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">गोपनीयता नीति (Privacy Policy)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">हाइपरलिंकिंग नीति (Hyperlinking)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">अस्वीकरण (Disclaimer)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">साइटमैप (Sitemap)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Government Sites -->
+                <div>
+                    <div style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">सरकारी साइटें (GOV SITES)</div>
+                    <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2.3;">
+                        <li><a href="https://agmarknet.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">AGMARKNET <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://pmkisan.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">PM-KISAN <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://pmfby.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">PMFBY (फसल बीमा) <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://enam.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">e-NAM Portal <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://agriculture.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">Min. of Agriculture <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Dark Bar -->
+            <div style="background: rgba(0,0,0,0.35); padding: 10px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px;">
+                <span>Powered by <strong>Abhishek Vishwakarma & Team The Smurfs</strong> ◈ AccuWeather API ◈ Groq AI ◈ Leaflet.js ◈ Chart.js</span>
+                <span>PAGE UPDATED ON : <strong>28-04-2026</strong></span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Chatbot UI -->
+    <div id="chatbot-fab" onclick="toggleChatbot()">
+        <i class="fa-solid fa-robot fa-2x"></i>
+    </div>
+
+    <div id="chatbot-window" class="chatbot-hidden">
+        <div class="chatbot-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-robot fa-2x"></i>
+                <div>
+                    <div style="font-weight: bold; font-size: 16px;">कृषि-मित्र (Chatbot)</div>
+                    <div style="font-size: 11px; display: flex; align-items: center; gap: 4px;">
+                        <span
+                            style="display:inline-block; width:8px; height:8px; background-color:#4CAF50; border-radius:50%;"></span>
+                        Online
+                    </div>
+                </div>
+            </div>
+            <div style="cursor: pointer; display: flex; gap: 12px; align-items: center;">
+                <button id="tts-toggle" onclick="toggleTTS()" title="TTS बंद (OFF)" style="background:none;border:none;cursor:pointer;color:white;font-size:16px;"><i class="fa-solid fa-volume-xmark"></i></button>
+                <i class="fa-solid fa-chevron-down" onclick="toggleChatbot()"></i>
+                <i class="fa-solid fa-xmark" onclick="toggleChatbot()"></i>
+            </div>
+        </div>
+
+        <div id="chatbot-messages" class="chatbot-messages">
+            <!-- Dynamic greeting injected via JS -->
+        </div>
+
+        <div class="chatbot-suggestions">
+            <button onclick="sendChatMessage('Crop diseases')">Crop diseases</button>
+            <button onclick="sendChatMessage('Weather impact')">Weather impact</button>
+            <button onclick="sendChatMessage('Subsidy schemes')">Subsidy schemes</button>
+            <button onclick="sendChatMessage('Market prices')">Market prices</button>
+            <button onclick="sendChatMessage('Irrigation tips')">Irrigation tips</button>
+        </div>
+
+        <div class="chatbot-input-area">
+            <i class="fa-solid fa-ellipsis-vertical" style="color: white; margin-right: 10px; cursor:pointer;"></i>
+            <input type="text" id="chatbot-input" placeholder="Type your message here"
+                onkeypress="handleChatInput(event)">
+            <button onclick="processChatInput()"
+                style="background: white; border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1565c0; margin-left: 10px;">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
