@@ -1,4 +1,4 @@
-const API_BASE = 'https://krishi-backend-plfv.onrender.com'; // Change to production URL when deployed
+const API_BASE = 'https://krishi-backend-plfv.onrender.com/api'; // Production backend
 let map;
 
 document.addEventListener('DOMContentLoaded', () => {
