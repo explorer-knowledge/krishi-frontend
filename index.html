@@ -48,11 +48,16 @@
         <!-- Primary Menu (bilingual) -->
         <nav class="primary-menu">
             <ul>
-                <li><a href="#">मुखपृष्ठ (Home)</a></li>
-                <li><a href="#">मौसम डेटा (Weather)</a></li>
-                <li><a href="#">फसल सलाह (Crop Advisory)</a></li>
-                <li><a href="#">योजनाएं (Schemes)</a></li>
-                <li><a href="#">संपर्क करें (Contact)</a></li>
+                <li><a href="index.html" class="active">मुखपृष्ठ (Home)</a></li>
+                <li><a href="what-to-grow.html">What to Grow?</a></li>
+                <li><a href="crop-analysis.html">Photo Crop Analysis</a></li>
+                <li><a href="market-price.html">Price of Crops</a></li>
+                <li><a href="advisory.html">AI Advisory</a></li>
+                <li><a href="npk-value.html">NPK Value</a></li>
+                <li><a href="community.html">Farmers Community</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="#">मौसम (Weather)</a></li>
+                <li><a href="schemes.html">योजनाएं (Schemes)</a></li>
             </ul>
         </nav>
 
@@ -218,7 +223,6 @@
                     </div>
                 </div>
 
-
             </div>
 
             <!-- Right Column (Sidebar) -->
@@ -305,7 +309,7 @@
             </aside>
         </main>
 
-        <!-- Half Page News & Schemes Section -->
+        <!-- Half Page News, Schemes & E-Paper Section -->
         <div class="half-page-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 30px 20px 30px;">
             <!-- Regional News -->
             <div class="panel" id="regional-news-panel" style="margin: 0; height: 100%;">
@@ -333,6 +337,23 @@
                                 <i class="fa-solid fa-spinner fa-spin"></i> Fetching real-time scheme updates...
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily E-Paper Section -->
+        <div id="section-epaper" style="padding: 0 30px 30px 30px;">
+            <div class="panel" style="margin: 0;">
+                <div class="panel-header" style="font-size: 16px; padding: 15px;">
+                    <i class="fa-solid fa-newspaper"></i> कृषि दर्पण — Daily E-Paper
+                    <span style="font-size:11px; font-weight:400; margin-left:10px; color:#777;">कृषि समाचार पत्र</span>
+                </div>
+                <div class="panel-body" id="epaper-body" style="padding: 15px;">
+                    <div id="epaper-content" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:15px;">
+                        <div style="text-align:center; color:#888; grid-column:1/-1; padding:20px;">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Loading e-paper...
+                        </div>
                     </div>
                 </div>
             </div>
@@ -467,10 +488,24 @@
         </div>
     </div>
 
+    <!-- CDN libraries (must load before our modules) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="script.js"></script>
+
+    <!-- App modules — order matters: config first, main last -->
+    <script src="js/config.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/advisory.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/schemes.js"></script>
+    <script src="js/prices.js"></script>
+    <script src="js/whatToGrow.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/geo.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

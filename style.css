@@ -66,6 +66,24 @@ a:hover {
     align-items: center;
 }
 
+/* Main Content Area */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+}
+
+#ai-advisory-content ol, #ai-advisory-content ul {
+    padding-left: 20px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+#ai-advisory-content li {
+    margin-bottom: 5px;
+}
+
 /* Main Header */
 .main-header {
     display: flex;
@@ -525,4 +543,191 @@ a:hover {
     border-radius: 20px;
     outline: none;
     font-size: 13px;
+}
+
+/* =========================================================
+   KRISHI SUB-PAGE STYLES (shared across all 7 new pages)
+   ========================================================= */
+
+/* Top accessibility bar */
+.top-bar {
+    background-color: #002147;
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+}
+.top-bar a { color: rgba(255,255,255,0.75); margin: 0 5px; }
+.top-bar a:hover { color: #fff; text-decoration: none; }
+
+/* Agmarknet-style header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 4px solid var(--gov-blue);
+    padding: 10px 25px;
+}
+header .header-left { display: flex; align-items: center; gap: 14px; }
+header .emblem { height: 55px; }
+header .ministry-info h2 { font-size: 18px; color: var(--gov-blue); margin: 0; }
+header .ministry-info p { font-size: 11px; color: #666; margin: 0; }
+header .header-right { display: flex; align-items: center; gap: 12px; }
+header .portal-badge {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--gov-blue); color: white;
+    padding: 8px 16px; border-radius: 4px;
+}
+header .portal-badge i { font-size: 24px; color: #ffd54f; }
+header .portal-badge-text b { display: block; font-size: 16px; letter-spacing: 0.5px; }
+header .portal-badge-text span { font-size: 10px; opacity: 0.8; }
+
+/* Sub-page navigation */
+nav {
+    background: var(--gov-blue-light);
+    border-bottom: 1px solid #000;
+    overflow-x: auto;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; padding: 0;
+    white-space: nowrap;
+}
+nav ul li a {
+    color: #fff;
+    display: block;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+nav ul li a:hover,
+nav ul li a.active {
+    background: var(--gov-blue);
+    text-decoration: none;
+}
+
+/* Sub-page news ticker */
+.news-ticker {
+    background: #fff8e1;
+    border-bottom: 1px solid #e0c060;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 4px 0;
+    overflow: hidden;
+}
+.ticker-title {
+    background: var(--gov-saffron);
+    color: white;
+    padding: 4px 14px;
+    font-weight: bold;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.ticker-marquee-container { flex: 1; overflow: hidden; }
+.ticker-item { margin-right: 50px; }
+
+/* Hero section (sub-pages) */
+.hero-section {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: #002147;
+}
+
+/* Main content container (sub-pages) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Card component */
+.card {
+    background: white;
+    border: 1px solid var(--border-grey);
+    border-radius: 4px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade { animation: fadeInUp 0.5s ease-out both; }
+
+/* Gov-Navy text color */
+.gov-navy { color: #002147; }
+
+/* Agmarknet-style footer (sub-pages) */
+#main-footer {
+    background: #1a237e;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+.footer-texture-layer {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Ccircle cx='30' cy='140' r='15' stroke='rgba(255,255,255,0.04)' fill='none' stroke-width='1.5'/%3E%3Ccircle cx='170' cy='60' r='22' stroke='rgba(255,255,255,0.04)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+.footer-main-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 25px;
+    padding: 28px 30px 22px;
+    position: relative;
+}
+.footer-col {}
+.footer-col-heading {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #ffd54f;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.footer-link-list { list-style: none; padding: 0; }
+.footer-link-list li { margin-bottom: 7px; font-size: 12.5px; font-style: italic; }
+.footer-link-list a { color: rgba(255,255,255,0.78); }
+.footer-link-list a:hover { color: #fff; text-decoration: none; }
+.footer-social-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.12); color: white; font-size: 14px;
+    transition: background 0.2s;
+}
+.footer-social-btn:hover { background: rgba(255,255,255,0.25); }
+.footer-bottom-bar {
+    background: rgba(0,0,0,0.3);
+    padding: 9px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.8);
+    position: relative;
+}
+
+
+/* Responsive — sub pages */
+@media (max-width: 900px) {
+    .footer-main-grid { grid-template-columns: 1fr 1fr; }
+    nav ul { flex-wrap: wrap; }
+}
+@media (max-width: 600px) {
+    .footer-main-grid { grid-template-columns: 1fr; }
+    header { flex-wrap: wrap; gap: 10px; }
+    .hero-section { height: 220px; }
 }

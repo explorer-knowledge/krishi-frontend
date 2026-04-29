@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Schemes | कृषि-उद्यमी Portal</title>
+    <meta name="description" content="Explore all government schemes for Indian farmers — PM-KISAN, PMFBY, KCC, Soil Health Card, and more.">
+    <link rel="preload" href="clean_hero.jpg" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <div class="top-bar">
+        <div>भारत सरकार | Government of India</div>
+        <div>
+            <a href="javascript:void(0)">Screen Reader Access</a> |
+            <a href="javascript:void(0)" onclick="setLang('hi')">हिन्दी</a> |
+            <a href="javascript:void(0)" onclick="setLang('en')">English</a>
+        </div>
+    </div>
+    <header>
+        <div class="header-left">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India" class="emblem">
+            <div class="ministry-info"><h2>सत्यमेव जयते</h2><p>Digital India | Citizen Service</p></div>
+        </div>
+        <div class="header-right">
+            <div class="portal-badge">
+                <i class="fa-solid fa-wheat-awn"></i>
+                <div class="portal-badge-text"><b>कृषि-उद्यमी</b><span>Agricultural Intelligence Portal</span></div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">मुखपृष्ठ (Home)</a></li>
+            <li><a href="what-to-grow.html">What to Grow?</a></li>
+            <li><a href="crop-analysis.html">Photo Crop Analysis</a></li>
+            <li><a href="market-price.html">Price of Crops</a></li>
+            <li><a href="advisory.html">AI Advisory</a></li>
+            <li><a href="npk-value.html">NPK Value</a></li>
+            <li><a href="community.html">Farmers Community</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="schemes.html" class="active">योजनाएं (Schemes)</a></li>
+        </ul>
+    </nav>
+    <div class="news-ticker">
+        <div class="ticker-title">LATEST UPDATE</div>
+        <div class="ticker-marquee-container">
+            <marquee behavior="scroll" direction="left" scrollamount="6">
+                <span class="ticker-item">◈ PM-KISAN 19वीं किस्त जल्द जारी होगी। e-KYC जरूर करें।</span>
+                <span class="ticker-item">❖ PMFBY रबी 2025-26 नामांकन चल रहा है। अंतिम तिथि जांचें।</span>
+                <span class="ticker-item">◇ किसान क्रेडिट कार्ड पर 4% ब्याज — अभी आवेदन करें।</span>
+            </marquee>
+        </div>
+    </div>
+    <section class="hero-section">
+        <img src="clean_hero.jpg" alt="Agriculture Field" style="width:100%;height:100%;object-fit:cover;" loading="eager">
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to right,rgba(0,21,47,0.82) 0%,rgba(0,21,47,0.45) 55%,transparent 100%);"></div>
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 10%;color:white;">
+            <h1 style="font-size:38px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,0.4);">Government Schemes for Farmers / सरकारी किसान योजनाएं</h1>
+            <p style="font-size:18px;max-width:600px;margin-top:12px;opacity:0.95;">Explore all central government schemes, subsidies, and benefits available to Indian farmers.</p>
+        </div>
+    </section>
+
+    <main class="container" style="padding: 30px 20px;">
+        <div class="card animate-fade" style="padding: 25px;">
+            <!-- Category Filter Tabs -->
+            <div id="scheme-tabs" style="margin-bottom: 25px; display:flex; flex-wrap:wrap; gap:8px;">
+                <span style="color:#888; font-size:13px;">Loading categories...</span>
+            </div>
+
+            <!-- Schemes Grid -->
+            <div id="schemes-container" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap:20px;">
+                <div style="grid-column:1/-1; text-align:center; padding:40px; color:#888;">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; margin-bottom:15px; color:var(--gov-blue);"></i>
+                    <p>Loading government schemes...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chatbot FAB -->
+    <div id="chatbot-fab" onclick="toggleChatbot()" style="position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:var(--gov-blue);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,0.3);cursor:pointer;z-index:1000;">
+        <i class="fa-solid fa-robot fa-lg"></i>
+    </div>
+    <div id="chatbot-window" class="chatbot-hidden">
+        <div class="chatbot-header">
+            <div style="display:flex;align-items:center;gap:10px;"><i class="fa-solid fa-robot"></i><b>कृषि-मित्र (Chatbot)</b></div>
+            <div style="cursor:pointer;display:flex;gap:10px;align-items:center;">
+                <button id="tts-toggle" onclick="toggleTTS()" style="background:none;border:none;color:white;"><i class="fa-solid fa-volume-xmark"></i></button>
+                <i class="fa-solid fa-xmark" onclick="toggleChatbot()"></i>
+            </div>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-suggestions">
+            <button onclick="sendChatMessage('PM-KISAN eligibility')">PM-KISAN</button>
+            <button onclick="sendChatMessage('PMFBY crop insurance')">PMFBY</button>
+            <button onclick="sendChatMessage('Kisan Credit Card')">KCC</button>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Ask about schemes, eligibility..." onkeypress="handleChatInput(event)">
+            <button onclick="processChatInput()" style="background:white;border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1565c0;margin-left:10px;"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <footer id="main-footer">
+        <div class="footer-texture-layer"></div>
+        <div class="footer-main-grid">
+            <div class="footer-col">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                    <i class="fa-solid fa-wheat-awn" style="font-size:28px;color:#ffd54f;"></i>
+                    <div><div style="font-size:20px;font-weight:800;">कृषि-उद्यमी</div><div style="font-size:11px;opacity:0.75;text-transform:uppercase;">Krishi-Udyami Portal</div></div>
+                </div>
+                <p style="font-size:12.5px;line-height:1.7;opacity:0.85;">An integrated agricultural intelligence portal for Indian farmers.</p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-col-heading">USEFUL LINKS</h4>
+                <ul class="footer-link-list">
+                    <li><a href="index.html">Home Portal</a></li>
+                    <li><a href="market-price.html">Market Prices</a></li>
+                    <li><a href="https://pmkisan.gov.in" target="_blank">PM-KISAN ↗</a></li>
+                    <li><a href="https://pmfby.gov.in" target="_blank">PM Fasal Bima ↗</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-col-heading">QUICK LINKS</h4>
+                <ul class="footer-link-list">
+                    <li><a href="https://agricoop.nic.in" target="_blank">Ministry of Agriculture ↗</a></li>
+                    <li><a href="https://agmarknet.gov.in" target="_blank">Agmarknet ↗</a></li>
+                    <li><a href="https://enam.gov.in" target="_blank">eNAM Market ↗</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-col-heading">CONTACT US</h4>
+                <ul class="footer-link-list">
+                    <li style="font-style:normal;opacity:0.85;">Krishi Bhavan, New Delhi — 110001</li>
+                    <li><a href="tel:18001801551">☎ Kisan Helpline: 1800-180-1551</a></li>
+                    <li><a href="mailto:abhishekvi2062005@gmail.com">✉ abhishekvi2062005@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div>© 2026 <b>Krishi-Udyami Portal</b> | Developed for Government of India</div>
+            <div style="opacity:0.7;">Designed &amp; Developed by <b>The Smurfs</b> &nbsp;|&nbsp; Last Updated: <span id="footer-last-updated"></span></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('footer-last-updated').textContent =
+            new Date().toLocaleDateString('en-IN', { day:'2-digit', month:'2-digit', year:'numeric' });
+        function setLang(lang) {
+            window.currentLang = lang;
+            document.documentElement.lang = lang;
+            initCategoryFilters();
+            loadSchemes();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/schemes.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
