@@ -3,7 +3,7 @@
 // Loaded FIRST by every page. All other modules depend on this.
 // ─────────────────────────────────────────────────────
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://krishi-backend-plfv.onrender.com/api';
 
 window.currentLang = localStorage.getItem('krishi_lang') || 'hi';
 
