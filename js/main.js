@@ -9,4 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initYieldChart();    // charts.js — render static yield chart
     fetchLiveSchemes();  // schemes.js — populate Yojana scroller
     initChatbotGreeting(); // chatbot.js — show greeting messages
+
+    // Load e-paper immediately with default state so it's visible right away.
+    // updateRegionalNews will be called again by processWeatherResponse once
+    // the real location is detected, refreshing the cards with local news.
+    updateRegionalNews('Madhya Pradesh');
 });

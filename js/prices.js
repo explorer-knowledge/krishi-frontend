@@ -11,7 +11,7 @@ async function loadPrices() {
   const district = districtSelect ? districtSelect.value : '';
   const fromDate = dateFromInput ? dateFromInput.value : '';
   const toDate = dateToInput ? dateToInput.value : '';
-  const lang = window.currentLang || 'en';
+  const lang = 'en';
  
   // showLoader
   const tableContainer = document.getElementById('prices-table-container');
@@ -41,8 +41,7 @@ function renderPriceTable(records, lang) {
   }
 
   const headers = lang === 'hi'
-    ? ['फसल', 'मंडी', 'जिला', 'न्यूनतम ₹', 'अधिकतम ₹', 'मॉडल ₹', 'तारीख']
-    : ['Crop', 'Mandi', 'District', 'Min ₹', 'Max ₹', 'Modal ₹', 'Date'];
+    ['Crop', 'Mandi', 'District', 'Min ₹', 'Max ₹', 'Modal ₹', 'Date'];
 
   const tbody = records.map(r => `
     <tr>
@@ -74,7 +73,7 @@ async function initPricesPage() {
         const districtSelect = document.getElementById('district-select');
 
         if(stateSelect && data.states) {
-            stateSelect.innerHTML = '<option value="">All States / सभी राज्य</option>' + data.states.map(s => `<option value="${s}">${s}</option>`).join('');
+            stateSelect.innerHTML = '<option value="">All States / All States</option>' + data.states.map(s => `<option value="${s}">${s}</option>`).join('');
             
             // Populate district dropdown when state changes
             if (districtSelect && data.stateDistricts) {
@@ -83,9 +82,9 @@ async function initPricesPage() {
                     const districts = data.stateDistricts[selectedState];
                     
                     if (districts && districts.length > 0) {
-                        districtSelect.innerHTML = '<option value="">All Districts / सभी जिले</option>' + districts.map(d => `<option value="${d}">${d}</option>`).join('');
+                        districtSelect.innerHTML = '<option value="">All Districts / All Districts</option>' + districts.map(d => `<option value="${d}">${d}</option>`).join('');
                     } else {
-                        districtSelect.innerHTML = '<option value="">All Districts / सभी जिले</option>';
+                        districtSelect.innerHTML = '<option value="">All Districts / All Districts</option>';
                     }
                     
                     // Reset district selection to trigger full state fetch when user changes state
@@ -94,7 +93,7 @@ async function initPricesPage() {
             }
         }
         if(cropSelect && data.crops) {
-            cropSelect.innerHTML = '<option value="">All Crops / सभी फसलें</option>' + data.crops.map(c => `<option value="${c}">${c}</option>`).join('');
+            cropSelect.innerHTML = '<option value="">All Crops / All Crops</option>' + data.crops.map(c => `<option value="${c}">${c}</option>`).join('');
         }
         
         loadPrices();

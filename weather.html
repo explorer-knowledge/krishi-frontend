@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishi-Udyami - Hyper Detailed Weather & Forecast</title>
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .weather-hero {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-bottom: 3px solid var(--gov-saffron);
+        }
+        .weather-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+        .weather-hero-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 20px 30px;
+            color: white;
+        }
+        .detailed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .agri-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 15px; 
+            font-size: 13px; 
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Top Accessibility Nav -->
+        <div class="sticky-header-container">
+            <div class="top-bar">
+                <div>Krishi-Udyami Platform</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <a href="javascript:void(0)">The Smurfs</a> |
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
+
+            <header>
+                <div class="header-left">
+                    <img src="emblem.png" alt="Emblem of India" class="emblem">
+                    <div class="ministry-info">
+                        <h2>Krishi Udyami</h2>
+                        <p>Digital India | Citizen Service</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
+                        style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
+                            class="fa-solid fa-user"></i> Portal Login</button>
+                </div>
+            </header>
+
+            <!-- Primary Menu (bilingual) -->
+            <nav class="primary-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="what-to-grow.html">What to Grow?</a></li>
+                    <li><a href="market-price.html">Price of Crops</a></li>
+                    <li><a href="community.html">Farmers Community</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="weather.html" class="active">Weather</a></li>
+                    <li><a href="schemes.html">Schemes</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="weather-hero">
+            <img src="banner.jpg" alt="Weather Banner">
+            <div class="weather-hero-overlay">
+                <h1 style="margin:0; font-size: 28px;">Hyper Detailed Agri-Weather</h1>
+                <p style="margin:5px 0 0; font-size: 14px; opacity: 0.9;">7-Day Extended Forecast • Real-time Agricultural Metrics • AccuWeather Powered</p>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="container" style="padding: 20px 30px;">
+            <div class="panel" id="weather-panel-section">
+                <div class="panel-header" style="font-size: 18px; padding: 15px;"><i class="fa-solid fa-cloud-sun-rain"></i> Live Weather & 7-Day Forecast</div>
+                <div class="panel-body" id="weather-dashboard" style="padding: 20px;">
+                    <!-- Location Banner -->
+                    <div id="weather-location-bar"
+                        style="background: linear-gradient(135deg, var(--gov-blue), var(--gov-blue-light)); color: white; padding: 15px 20px; border-radius: 6px; margin-bottom: 25px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <span><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> <span id="accu-location" style="font-weight: bold;">Detecting
+                                location...</span></span>
+                        <span id="accu-obs-time" style="font-size: 13px; opacity: 0.9;"></span>
+                    </div>
+
+                    <!-- Current Conditions Grid -->
+                    <div class="detailed-grid">
+                        <!-- Primary Weather -->
+                        <div class="weather-block current-weather" style="text-align: center; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h3 style="margin-bottom: 15px; font-size: 18px; color: var(--gov-blue);">Current Weather</h3>
+                            <div id="accu-weather-icon" style="font-size: 4rem; margin: 15px 0;">
+                                <i class="fa-solid fa-spinner fa-spin" style="color: var(--gov-blue);"></i>
+                            </div>
+                            <div class="temperature" id="accu-temp" style="font-size: 3rem; font-weight: bold; margin: 10px 0;">--°C</div>
+                            <div id="accu-weather-text" style="font-size: 18px; color: #444; margin-bottom: 10px; font-weight: 500;">
+                                Loading...</div>
+                            <div id="accu-realfeel"
+                                style="font-size: 15px; color: var(--gov-saffron); font-weight: bold; background: #fff3e0; display: inline-block; padding: 5px 15px; border-radius: 20px;"></div>
+                        </div>
+
+                        <!-- Detailed Metrics -->
+                        <div class="weather-block" style="padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                            <h3 style="margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px;"><i class="fa-solid fa-chart-pie"></i> Detailed Atmospheric Metrics</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 14px;">
+                                <div><i class="fa-solid fa-droplet" style="color: #1976d2; width: 20px;"></i> Humidity<br><span
+                                        id="accu-humidity" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">--%</span></div>
+                                <div><i class="fa-solid fa-wind" style="color: #607d8b; width: 20px;"></i> Wind<br><span
+                                        id="accu-wind" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">-- km/h</span></div>
+                                <div><i class="fa-solid fa-eye" style="color: #795548; width: 20px;"></i> Visibility<br><span
+                                        id="accu-visibility" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">--
+                                        km</span></div>
+                                <div><i class="fa-solid fa-sun" style="color: #ff9800; width: 20px;"></i> UV Index<br><span
+                                        id="accu-uv" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">--</span></div>
+                                <div><i class="fa-solid fa-temperature-half" style="color: #e91e63; width: 20px;"></i> Dew
+                                    Point<br><span id="accu-dewpoint" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">--°C</span>
+                                </div>
+                                <div><i class="fa-solid fa-gauge-high" style="color: #9c27b0; width: 20px;"></i>
+                                    Pressure<br><span id="accu-pressure" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">--
+                                        mb</span></div>
+                                <div><i class="fa-solid fa-cloud" style="color: #90a4ae; width: 20px;"></i> Cloud
+                                    Cover<br><span id="accu-cloud" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">--%</span></div>
+                                <div><i class="fa-solid fa-cloud-rain" style="color: #2196f3; width: 20px;"></i> Precip
+                                    1h<br><span id="accu-precip" style="color: var(--gov-blue); font-weight: 600; font-size: 16px;">-- mm</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agriculture-Specific Data -->
+                    <div class="weather-block"
+                        style="background: #e3f2fd; border: 1px solid #90caf9; margin-bottom: 25px; padding: 25px;">
+                        <h3 style="color: var(--gov-blue); font-size: 18px; margin-bottom: 20px;"><i class="fa-solid fa-seedling"></i> Advanced Agri-Weather Data
+                        </h3>
+                        <div class="agri-grid">
+                            <div
+                                style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bbdefb; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                <i class="fa-solid fa-water" style="color: #0288d1; font-size: 2rem; margin-bottom: 10px;"></i>
+                                <div style="color: #555; font-weight: 600;">Evapotranspiration</div>
+                                <div style="font-size:11px; color: #888; margin-bottom: 8px;">(Water loss)</div>
+                                <span id="accu-evap" style="color: var(--gov-blue); font-size: 18px; font-weight: bold;">-- mm</span>
+                            </div>
+                            <div
+                                style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bbdefb; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                <i class="fa-solid fa-solar-panel" style="color: #f57f17; font-size: 2rem; margin-bottom: 10px;"></i>
+                                <div style="color: #555; font-weight: 600;">Solar Radiation</div>
+                                <div style="font-size:11px; color: #888; margin-bottom: 8px;">(Solar Irradiance)</div>
+                                <span id="accu-solar" style="color: var(--gov-blue); font-size: 18px; font-weight: bold;">-- W/m²</span>
+                            </div>
+                            <div
+                                style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bbdefb; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                <i class="fa-solid fa-sun" style="color: #ff6f00; font-size: 2rem; margin-bottom: 10px;"></i>
+                                <div style="color: #555; font-weight: 600;">Sunshine Hours</div>
+                                <div style="font-size:11px; color: #888; margin-bottom: 8px;">(Hours of Sun)</div>
+                                <span id="accu-sunhours" style="color: var(--gov-blue); font-size: 18px; font-weight: bold;">-- hrs</span>
+                            </div>
+                            <div
+                                style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #bbdefb; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                <i class="fa-solid fa-cloud-showers-heavy"
+                                    style="color: #1565c0; font-size: 2rem; margin-bottom: 10px;"></i>
+                                <div style="color: #555; font-weight: 600;">Rain Probability</div>
+                                <div style="font-size:11px; color: #888; margin-bottom: 8px;">(Next 12h)</div>
+                                <span id="accu-rainprob" style="color: var(--gov-blue); font-size: 18px; font-weight: bold;">--%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7-Day Forecast Table -->
+                    <h3 style="font-size: 18px; color: var(--gov-blue); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px;"><i class="fa-solid fa-calendar-days"></i>
+                        7-Day Extended Forecast</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="forecast-table" style="width: 100%; min-width: 600px;">
+                            <thead>
+                                <tr>
+                                    <th style="font-size: 14px; padding: 12px;">Date</th>
+                                    <th style="font-size: 14px; padding: 12px;">Day / Night Conditions</th>
+                                    <th style="font-size: 14px; padding: 12px;">Max/Min Temp</th>
+                                    <th style="font-size: 14px; padding: 12px;">Precipitation %</th>
+                                    <th style="font-size: 14px; padding: 12px;">Advisory</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accu-forecast-body">
+                                <tr>
+                                    <td colspan="5" style="text-align:center; color: #888; padding: 30px;"><i
+                                            class="fa-solid fa-spinner fa-spin fa-2x"></i><br><br>Loading extended forecast...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="main-footer" style="background: #1565c0 url('data:image/svg+xml,\
+            <svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22>\
+            <path d=%22M50 0C55 20 70 40 50 60C30 80 10 60 0 80%22 stroke=%22rgba(255,255,255,0.06)%22 fill=%22none%22 stroke-width=%222%22/>\
+            <path d=%22M150 20C160 40 180 50 160 70C140 90 120 80 110 100%22 stroke=%22rgba(255,255,255,0.06)%22 fill=%22none%22 stroke-width=%222%22/>\
+            <circle cx=%2230%22 cy=%22140%22 r=%2215%22 stroke=%22rgba(255,255,255,0.04)%22 fill=%22none%22 stroke-width=%221.5%22/>\
+            <circle cx=%22170%22 cy=%22160%22 r=%2220%22 stroke=%22rgba(255,255,255,0.04)%22 fill=%22none%22 stroke-width=%221.5%22/>\
+            <path d=%22M80 120C90 100 110 110 120 130C130 150 100 160 90 180%22 stroke=%22rgba(255,255,255,0.05)%22 fill=%22none%22 stroke-width=%222%22/>\
+            </svg>'); color: white; padding: 0;">
+            <div style="background: rgba(0,0,0,0.35); padding: 15px 30px; text-align: center; font-size: 13px;">
+                © 2026 <b>Krishi-Udyami Portal</b> | Designed & Developed by <b>The Smurfs</b>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/weather.js"></script>
+    <script>
+        // On page load, fetch weather by IP to populate the dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof fetchWeatherByIp === 'function') {
+                fetchWeatherByIp();
+            }
+        });
+    </script>
+</body>
+
+</html>

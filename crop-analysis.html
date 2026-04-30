@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Crop Analysis | कृषि-उद्यमी Portal</title>
+    <title>Photo Crop Analysis | Krishi-Udyami Portal</title>
     <meta name="description" content="AI-powered crop disease detection and plant health analysis — coming soon to Krishi-Udyami portal.">
     <link rel="preload" href="clean_hero.jpg" as="image" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,61 +16,67 @@
 </head>
 <body>
     <!-- Top Accessibility Bar -->
-    <div class="top-bar">
-        <div>भारत सरकार | Government of India</div>
-        <div>
-            <a href="javascript:void(0)">Screen Reader Access</a> |
-            <a href="javascript:void(0)" onclick="document.documentElement.lang='hi'">हिन्दी</a> |
-            <a href="javascript:void(0)" onclick="document.documentElement.lang='en'">English</a>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header>
-        <div class="header-left">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png"
-                 alt="Emblem of India" class="emblem">
-            <div class="ministry-info">
-                <h2>सत्यमेव जयते</h2>
-                <p>Digital India | Citizen Service</p>
-            </div>
-        </div>
-        <div class="header-right">
-            <div class="portal-badge">
-                <i class="fa-solid fa-wheat-awn"></i>
-                <div class="portal-badge-text">
-                    <b>कृषि-उद्यमी</b>
-                    <span>Agricultural Intelligence Portal</span>
+    <!-- Top Accessibility Nav -->
+    <div class="sticky-header-container">
+        <div class="top-bar">
+                <div>Krishi-Udyami Platform</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <a href="javascript:void(0)">The Smurfs</a> |
+                    <div id="google_translate_element"></div>
                 </div>
             </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">मुखपृष्ठ (Home)</a></li>
-            <li><a href="what-to-grow.html">What to Grow?</a></li>
-            <li><a href="crop-analysis.html" class="active">Photo Crop Analysis</a></li>
-            <li><a href="market-price.html">Price of Crops</a></li>
-            <li><a href="advisory.html">AI Advisory</a></li>
-            <li><a href="npk-value.html">NPK Value</a></li>
-            <li><a href="community.html">Farmers Community</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-    </nav>
-
-    <!-- News Ticker -->
-    <div class="news-ticker">
-        <div class="ticker-title">LATEST UPDATE</div>
-        <div class="ticker-marquee-container">
-            <marquee behavior="scroll" direction="left" scrollamount="6">
-                <span class="ticker-item">◈ IMD ने मध्य प्रदेश में भारी वर्षा की चेतावनी जारी की। सोयाबीन कटाई 48 घंटे स्थगित करें।</span>
-                <span class="ticker-item">❖ पीएम-किसान की अगली किस्त सत्यापित खातों में जल्द जमा होगी।</span>
-                <span class="ticker-item">⬥ स्मार्ट सिंचाई सब्सिडी के लिए पंजीकरण खुला है।</span>
-                <span class="ticker-item">◇ गेहूं MSP ₹2,275 प्रति क्विंटल — 5% वृद्धि प्रस्तावित।</span>
-            </marquee>
-        </div>
+        
+            <header>
+                <div class="header-left">
+                    <img src="logo.png" alt="Jai Jawan Jai Kisan Logo" class="emblem">
+                    <div class="ministry-info">
+                        <h2>Jai Jawan Jai Kisan</h2>
+                        <p>Digital India | Citizen Service</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
+                        style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
+                            class="fa-solid fa-user"></i> Portal Login</button>
+                </div>
+            </header>
+        
+            <!-- Primary Menu (bilingual) -->
+            <nav class="primary-menu">
+                <ul>
+                    <li><a href="index.html" class="">Home</a></li>
+                    <li><a href="what-to-grow.html" class="">What to Grow?</a></li>
+                    <li><a href="market-price.html" class="">Price of Crops</a></li>
+                    <li><a href="community.html" class="">Farmers Community</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="weather.html">Weather</a></li>
+                    <li><a href="schemes.html" class="">Schemes</a></li>
+                </ul>
+            </nav>
+        
+            <div class="news-ticker">
+                <div class="ticker-title">LATEST UPDATE</div>
+                <div class="ticker-marquee-container">
+                    <marquee behavior="scroll" direction="left" scrollamount="6">
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;PM-KISAN 19th
+                            installment will be released soon. Please complete e-KYC.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;PMFBY Rabi
+                            2025-26 enrollment is ongoing. Check the last date.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Kisan Credit Card
+                            loan at 4% interest — Apply Now.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Soil Health Card
+                            portal updated with new organic farming guidelines.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Subsidy of up to
+                            50% available on solar water pumps under PM-KUSUM.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Minimum Support
+                            Price (MSP) for Wheat increased to ₹2,275 per quintal.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Warning: Heavy
+                            rainfall expected in Central regions; delay harvesting.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Apply for
+                            National Horticulture Board (NHB) commercial farming grants.</span>
+                    </marquee>
+                </div>
+            </div>
     </div>
 
     <!-- Hero Banner -->
@@ -121,7 +127,7 @@
         <div class="chatbot-header">
             <div style="display:flex;align-items:center;gap:10px;">
                 <i class="fa-solid fa-robot"></i>
-                <b>कृषि-मित्र (Chatbot)</b>
+                <b>Krishi-Mitra (Chatbot)</b>
             </div>
             <div style="cursor:pointer;display:flex;gap:10px;align-items:center;">
                 <button id="tts-toggle" onclick="toggleTTS()" style="background:none;border:none;color:white;"><i class="fa-solid fa-volume-xmark"></i></button>
@@ -151,7 +157,7 @@
                 <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
                     <i class="fa-solid fa-wheat-awn" style="font-size:28px;color:#ffd54f;"></i>
                     <div>
-                        <div style="font-size:20px;font-weight:800;letter-spacing:1px;">कृषि-उद्यमी</div>
+                        <div style="font-size:20px;font-weight:800;letter-spacing:1px;">Krishi-Udyami</div>
                         <div style="font-size:11px;opacity:0.75;text-transform:uppercase;letter-spacing:1px;">Krishi-Udyami Portal</div>
                     </div>
                 </div>

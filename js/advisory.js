@@ -14,7 +14,7 @@ async function initAdvisory() {
 }
 
 async function getAdvisory() {
-  const lang = window.currentLang || 'en';
+  const lang = 'en';
   
   const cropInput = document.getElementById('advisory-crop');
   const stateInput = document.getElementById('advisory-state');
@@ -32,7 +32,6 @@ async function getAdvisory() {
   };
 
   if (!farmerContext.crop || !farmerContext.state) {
-    alert(lang === 'hi' ? 'फसल और राज्य आवश्यक हैं' : 'Crop and state are required');
     return;
   }
 
@@ -61,7 +60,7 @@ async function getAdvisory() {
 }
 
 async function sendFollowUp() {
-  const lang = window.currentLang || 'en';
+  const lang = 'en';
   const followUpInput = document.getElementById('followup-input');
   if(!followUpInput) return;
   const question = followUpInput.value.trim();
@@ -113,12 +112,12 @@ function renderStructuredAdvisory(advisory, lang) {
         <p>${lang === 'hi' ? (panel[p.fieldHi] || panel[p.field]) : panel[p.field]}</p>
         ${p.key === 'pestAlert' && panel.remedy ? `
           <div class="remedy-box" style="background: #ffebee; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 13px;">
-            <strong>${lang === 'hi' ? 'उपाय:' : 'Remedy:'}</strong>
+            <strong>Remedy:</strong>
             ${lang === 'hi' ? (panel.remedy_hi || panel.remedy) : panel.remedy}
           </div>` : ''}
         ${p.key === 'schemeReminder' && panel.url ? `
           <a href="${panel.url}" target="_blank" class="scheme-link" style="display:inline-block; margin-top: 10px; background: var(--gov-blue); color: #fff; padding: 5px 10px; text-decoration: none; border-radius: 4px;">
-            ${lang === 'hi' ? 'आवेदन करें →' : 'Apply →'}
+            Apply →
           </a>` : ''}
       </div>
     `;

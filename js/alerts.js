@@ -21,7 +21,8 @@ async function subscribeAlerts(event) {
 
     // Client-side validation
     if (!mobile || !/^[6-9]\d{9}$/.test(mobile)) {
-        alert('कृपया सही 10-अंकीय मोबाइल नंबर दर्ज करें।\nPlease enter a valid 10-digit mobile number.');
+        submitBtn.textContent = 'Invalid Number';
+        setTimeout(() => submitBtn.textContent = 'Subscribe', 3000);
         return;
     }
 
@@ -30,7 +31,7 @@ async function subscribeAlerts(event) {
         : [];
 
     submitBtn.disabled    = true;
-    submitBtn.textContent = 'प्रोसेसिंग...';
+    submitBtn.textContent = 'Processing...';
 
     try {
         const res  = await fetch(`${API_BASE}/alerts/subscribe`, {
@@ -49,16 +50,16 @@ async function subscribeAlerts(event) {
         });
         const json = await res.json();
         if (json.success) {
-            alert(json.data.message);
+            submitBtn.textContent = 'Success!';
             document.getElementById('alert-form').reset();
+            setTimeout(() => { submitBtn.disabled = false; submitBtn.textContent = 'Subscribe'; }, 3000);
         } else {
-            alert('त्रुटि (Error): ' + json.error);
+            submitBtn.textContent = 'Error';
+            setTimeout(() => { submitBtn.disabled = false; submitBtn.textContent = 'Subscribe'; }, 3000);
         }
     } catch (e) {
         console.error('Subscription Error:', e);
-        alert('नेटवर्क त्रुटि। कृपया बाद में पुनः प्रयास करें।\nNetwork error. Please try again later.');
-    } finally {
-        submitBtn.disabled    = false;
-        submitBtn.textContent = 'सब्सक्राइब करें (Subscribe)';
+        submitBtn.textContent = 'Network Error';
+        setTimeout(() => { submitBtn.disabled = false; submitBtn.textContent = 'Subscribe'; }, 3000);
     }
 }

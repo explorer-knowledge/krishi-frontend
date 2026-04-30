@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>कृषि-उद्यमी - Agricultural Intelligence & Weather Portal</title>
+    <title>Krishi-Udyami - Agricultural Intelligence & Weather Portal</title>
     <!-- FontAwesome for standard icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Leaflet CSS -->
@@ -16,76 +16,103 @@
 <body>
     <div class="wrapper">
         <!-- Top Accessibility Nav -->
-        <div class="top-nav">
-            <div class="top-nav-left">
-                <a href="#">Skip to Main Content</a>
+        <div class="sticky-header-container">
+            <div class="top-bar">
+                <div>Krishi-Udyami Platform</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <a href="javascript:void(0)">The Smurfs</a> |
+                    <div id="google_translate_element"></div>
+                </div>
             </div>
-            <div class="top-nav-right">
-                <a href="#">A-</a>
-                <a href="#">A</a>
-                <a href="#">A+</a>
-                <span style="margin: 0 10px;">|</span>
-                <a href="#">English</a>
-                <a href="#">हिन्दी</a>
-            </div>
-        </div>
 
-        <!-- Main Header (agmarknet-inspired clean centered layout) -->
-        <header class="main-header" style="padding: 12px 25px; border-bottom: 3px solid var(--gov-blue); background: white;">
-            <div class="header-side" style="flex: 0 0 auto; display: flex; align-items: center; gap: 10px;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem" style="height: 55px; opacity: 0.85;">
-            </div>
-            <div class="logo-section" style="flex: 1; text-align: center;">
-                <h1 style="font-size: 2.2rem; margin: 0; color: var(--gov-blue); font-weight: 900; letter-spacing: 0.5px;">कृषि-उद्यमी</h1>
-                <div class="subtitle" style="font-size: 1rem; color: #555; font-weight: 600; margin-top: 2px;">Agricultural Intelligence & Weather Portal</div>
-                <div style="font-size: 10px; color: #999; margin-top: 3px; letter-spacing: 0.5px;">कृषि बुद्धिमत्ता एवं मौसम पोर्टल ◈ Abhishek Vishwakarma & Team The Smurfs</div>
-            </div>
-            <div class="header-side" style="flex: 0 0 auto; display: flex; align-items: center;">
-                <i class="fa-solid fa-wheat-awn fa-2x" style="color: var(--gov-saffron);"></i>
-            </div>
-        </header>
+            <header>
+                <div class="header-left">
+                    <img src="emblem.png" alt="Emblem of India" class="emblem">
+                    <div class="ministry-info">
+                        <h2>Krishi Udyami</h2>
+                        <p>Digital India | Citizen Service</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button onclick="document.getElementById('login-modal').style.display='flex'"
+                        style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
+                            class="fa-solid fa-user"></i> Portal Login</button>
+                </div>
+            </header>
 
-        <!-- Primary Menu (bilingual) -->
-        <nav class="primary-menu">
-            <ul>
-                <li><a href="index.html" class="active">मुखपृष्ठ (Home)</a></li>
-                <li><a href="what-to-grow.html">What to Grow?</a></li>
-                <li><a href="crop-analysis.html">Photo Crop Analysis</a></li>
-                <li><a href="market-price.html">Price of Crops</a></li>
-                <li><a href="advisory.html">AI Advisory</a></li>
-                <li><a href="npk-value.html">NPK Value</a></li>
-                <li><a href="community.html">Farmers Community</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-                <li><a href="#">मौसम (Weather)</a></li>
-                <li><a href="schemes.html">योजनाएं (Schemes)</a></li>
-            </ul>
-        </nav>
+            <!-- Primary Menu (bilingual) -->
+            <nav class="primary-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="what-to-grow.html">What to Grow?</a></li>
+                    <li><a href="market-price.html">Price of Crops</a></li>
+                    <li><a href="community.html">Farmers Community</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="weather.html">Weather</a></li>
+                    <li><a href="schemes.html">Schemes</a></li>
+                </ul>
+            </nav>
 
-        <!-- News Ticker -->
-        <div class="news-ticker">
-            <div class="ticker-label">ताज़ा अपडेट (LATEST)</div>
-            <marquee behavior="scroll" direction="left" scrollamount="6">
-                ◈ IMD ने मध्य प्रदेश में भारी वर्षा की चेतावनी जारी की। सोयाबीन कटाई 48 घंटे स्थगित करें। (IMD heavy rainfall warning for MP.) |
-                ❖ पीएम-किसान की अगली किस्त सत्यापित खातों में जल्द जमा होगी। (PM-KISAN installment to be processed.) |
-                ⬥ स्मार्ट सिंचाई सब्सिडी के लिए पंजीकरण खुला है। (Registration open for smart irrigation subsidies.) |
-                ◇ गेहूं MSP ₹2,275 प्रति क्विंटल — 5% वृद्धि प्रस्तावित। (Wheat MSP ₹2,275/quintal — 5% hike proposed.) |
-                ❖ e-NAM पोर्टल पर 1,500+ मंडियां जुड़ीं। अपनी फसल ऑनलाइन बेचें। (1,500+ mandis on e-NAM. Sell crops online.) |
-                ◈ उत्तर भारत में लू चेतावनी: तापमान 45°C+ संभव। पशुओं को छाया में रखें। (Heatwave alert: 45°C+ likely in North India.) |
-                ⬥ PMFBY खरीफ 2026 पंजीकरण 15 मई से शुरू। (PMFBY Kharif 2026 registration starts May 15.) |
-                ◇ कुसुम योजना: सोलर पंप पर 60% सब्सिडी — आवेदन की अंतिम तिथि 30 जून। (KUSUM: 60% subsidy on solar pumps — apply by June 30.) |
-                ◈ APMC मंडी: सोयाबीन ₹4,850/क्विंटल, चना ₹5,200/क्विंटल, मक्का ₹2,100/क्विंटल। (APMC: Soybean ₹4,850, Gram ₹5,200, Maize ₹2,100 per quintal.) |
-                ⬥ मृदा स्वास्थ्य कार्ड: इस सप्ताह सभी जिलों में मुफ्त मिट्टी परीक्षण शिविर। (Free soil testing camps in all districts this week.) |
-                ❖ जैविक खेती अपनाने वाले किसानों को ₹50,000/हेक्टेयर प्रोत्साहन। (₹50,000/hectare incentive for organic farming.) |
-                ◇ डीजल सब्सिडी: छोटे किसानों को ₹500/एकड़ की राहत मंजूर। (Diesel subsidy: ₹500/acre relief for small farmers approved.)
-            </marquee>
+            <div class="news-ticker">
+                <div class="ticker-title">LATEST UPDATE</div>
+                <div class="ticker-marquee-container">
+                    <marquee behavior="scroll" direction="left" scrollamount="6">
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;PM-KISAN 19th
+                            installment will be released soon. Please complete e-KYC.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;PMFBY Rabi
+                            2025-26 enrollment is ongoing. Check the last date.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;Kisan Credit Card
+                            loan at 4% interest — Apply Now.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;Soil Health Card
+                            portal updated with new organic farming guidelines.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;Subsidy of up to
+                            50% available on solar water pumps under PM-KUSUM.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;Minimum Support
+                            Price (MSP) for Wheat increased to ₹2,275 per quintal.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;Warning: Heavy
+                            rainfall expected in Central regions; delay harvesting.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">•
+                                LIVE</span>&nbsp;Apply for
+                            National Horticulture Board (NHB) commercial farming grants.</span>
+                    </marquee>
+                </div>
+            </div>
         </div>
 
         <!-- Hero Banner (agmarknet-style clean image with overlay) -->
-        <div style="position: relative; width: 100%; height: 200px; overflow: hidden; border-bottom: 3px solid var(--gov-saffron);">
-            <img src="hero_banner.png" alt="कृषि उपज एवं मंडी (Agricultural Produce & Market)" style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%;">
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); padding: 15px 25px 12px;">
-                <span style="color: white; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">कृषि-उद्यमी ◈ कृषि बुद्धिमत्ता एवं मौसम पोर्टल</span>
-                <span style="color: rgba(255,255,255,0.7); font-size: 12px; margin-left: 15px;">AccuWeather Powered ◈ AI Chatbot ◈ Live Geo-Tracking</span>
+        <div
+            style="position: relative; width: 100%; height: 300px; overflow: hidden; border-bottom: 3px solid var(--gov-saffron);">
+            <img src="banner.jpg" alt="Agricultural Produce & Market"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center 40%;">
+            <div
+                style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.72)); padding: 15px 25px 14px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+                <div>
+                    <span style="color: white; font-size: 15px; font-weight: 500; letter-spacing: 0.5px;">Krishi-Udyami
+                        &mdash; Agricultural Intelligence &amp; Weather Portal</span><br>
+                    <span style="color: rgba(255,255,255,0.7); font-size: 11px;">AccuWeather Powered &bull; AI Chatbot
+                        &bull; Live Geo-Tracking</span>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <a href="weather.html"
+                        style="background:rgba(255,255,255,0.18);backdrop-filter:blur(6px);color:#fff;border:1.5px solid rgba(255,255,255,0.5);padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:6px;transition:background 0.2s;"
+                        onmouseenter="this.style.background='rgba(255,255,255,0.32)'"
+                        onmouseleave="this.style.background='rgba(255,255,255,0.18)'">
+                        <i class="fa-solid fa-cloud-sun"></i> View Weather
+                    </a>
+                    <a href="#epaper-section"
+                        style="background:rgba(255,255,255,0.18);backdrop-filter:blur(6px);color:#fff;border:1.5px solid rgba(255,255,255,0.5);padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:6px;transition:background 0.2s;"
+                        onmouseenter="this.style.background='rgba(255,255,255,0.32)'"
+                        onmouseleave="this.style.background='rgba(255,255,255,0.18)'">
+                        <i class="fa-solid fa-newspaper"></i> Read E-Newspaper
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -95,19 +122,24 @@
             <div class="content-left">
                 <!-- Map Section -->
                 <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-map-location-dot"></i> फ़ार्म लोकेशन ट्रैकर (Farm Location Tracker)</div>
+                    <div class="panel-header"><i class="fa-solid fa-map-location-dot"></i> Farm
+                        Location Tracker</div>
                     <!-- Manual Location Search -->
-                    <div style="padding: 10px 12px; background: #f0f4ff; border-bottom: 1px solid #d0daf5; display: flex; gap: 8px; align-items: center;">
+                    <div
+                        style="padding: 10px 12px; background: #f0f4ff; border-bottom: 1px solid #d0daf5; display: flex; gap: 8px; align-items: center;">
                         <i class="fa-solid fa-search" style="color: var(--gov-blue); font-size: 13px;"></i>
-                        <input type="text" id="manual-location-input"
-                            placeholder="शहर खोजें (Search city, e.g. Pune, Jaipur...)"
-                            style="flex:1; padding: 7px 10px; border: 1px solid #c5d0ea; border-radius: 4px; font-size: 13px; outline: none;"
-                            onkeypress="if(event.key==='Enter') searchManualLocation()">
+                        <!-- Wrapper gives the dropdown an anchor point -->
+                        <div id="search-input-wrapper" style="flex:1; position: relative;">
+                            <input type="text" id="manual-location-input" placeholder="Search city or area..."
+                                style="width:100%; padding: 7px 10px; border: 1px solid #c5d0ea; border-radius: 4px; font-size: 13px; outline: none;"
+                                autocomplete="off" onkeydown="handleSearchKey(event)"
+                                oninput="onSearchInput(this.value)">
+                        </div>
                         <button id="manual-location-btn" onclick="searchManualLocation()"
                             style="background: var(--gov-blue); color: white; border: none; padding: 7px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; white-space: nowrap;">
-                            <i class="fa-solid fa-location-crosshairs"></i> खोजें
+                            <i class="fa-solid fa-location-crosshairs"></i> Search
                         </button>
-                        <button onclick="detectGpsLocation()" title="Use GPS" 
+                        <button onclick="detectGpsLocation()" title="Use GPS"
                             style="background: #388e3c; color: white; border: none; padding: 7px 10px; border-radius: 4px; cursor: pointer; font-size: 13px;">
                             <i class="fa-solid fa-satellite-dish"></i>
                         </button>
@@ -120,12 +152,14 @@
 
 
                 <!-- AccuWeather Powered Weather Dashboard -->
-                <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-cloud-sun-rain"></i> मौसम इंटेलिजेंस डैशबोर्ड (AccuWeather Live)</div>
+                <div class="panel" id="weather-panel-section">
+                    <div class="panel-header"><i class="fa-solid fa-cloud-sun-rain"></i> Weather Details</div>
                     <div class="panel-body" id="weather-dashboard">
                         <!-- Location Banner -->
-                        <div id="weather-location-bar" style="background: linear-gradient(135deg, var(--gov-blue), var(--gov-blue-light)); color: white; padding: 10px 15px; margin: -15px -15px 15px -15px; font-size: 13px; display: flex; justify-content: space-between; align-items: center;">
-                            <span><i class="fa-solid fa-location-dot"></i> <span id="accu-location">स्थान का पता लगाया जा रहा है...</span></span>
+                        <div id="weather-location-bar"
+                            style="background: linear-gradient(135deg, var(--gov-blue), var(--gov-blue-light)); color: white; padding: 10px 15px; margin: -15px -15px 15px -15px; font-size: 13px; display: flex; justify-content: space-between; align-items: center;">
+                            <span><i class="fa-solid fa-location-dot"></i> <span id="accu-location">Detecting
+                                    location...</span></span>
                             <span id="accu-obs-time" style="font-size: 11px; opacity: 0.8;"></span>
                         </div>
 
@@ -133,93 +167,140 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
                             <!-- Primary Weather -->
                             <div class="weather-block current-weather" style="text-align: center;">
-                                <h3>वर्तमान मौसम (Current Weather)</h3>
+                                <h3>Current Weather</h3>
                                 <div id="accu-weather-icon" style="font-size: 2.5rem; margin: 5px 0;">
                                     <i class="fa-solid fa-spinner fa-spin" style="color: var(--gov-blue);"></i>
                                 </div>
                                 <div class="temperature" id="accu-temp">--°C</div>
-                                <div id="accu-weather-text" style="font-size: 13px; color: #555; margin-bottom: 8px;">Loading...</div>
-                                <div id="accu-realfeel" style="font-size: 12px; color: var(--gov-saffron); font-weight: bold;"></div>
+                                <div id="accu-weather-text" style="font-size: 13px; color: #555; margin-bottom: 8px;">
+                                    Loading...</div>
+                                <div id="accu-realfeel"
+                                    style="font-size: 12px; color: var(--gov-saffron); font-weight: bold;"></div>
                             </div>
 
                             <!-- Detailed Metrics -->
                             <div class="weather-block">
-                                <h3>विस्तृत माप (Detailed Metrics)</h3>
+                                <h3>Detailed Metrics</h3>
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
-                                    <div><i class="fa-solid fa-droplet" style="color: #1976d2;"></i> आर्द्रता (Humidity)<br><span id="accu-humidity" style="color: var(--gov-blue);">--%</span></div>
-                                    <div><i class="fa-solid fa-wind" style="color: #607d8b;"></i> हवा (Wind)<br><span id="accu-wind" style="color: var(--gov-blue);">-- km/h</span></div>
-                                    <div><i class="fa-solid fa-eye" style="color: #795548;"></i> दृश्यता (Visibility)<br><span id="accu-visibility" style="color: var(--gov-blue);">-- km</span></div>
-                                    <div><i class="fa-solid fa-sun" style="color: #ff9800;"></i> UV सूचकांक (UV Index)<br><span id="accu-uv" style="color: var(--gov-blue);">--</span></div>
-                                    <div><i class="fa-solid fa-temperature-half" style="color: #e91e63;"></i> ओसांक (Dew Point)<br><span id="accu-dewpoint" style="color: var(--gov-blue);">--°C</span></div>
-                                    <div><i class="fa-solid fa-gauge-high" style="color: #9c27b0;"></i> दबाव (Pressure)<br><span id="accu-pressure" style="color: var(--gov-blue);">-- mb</span></div>
-                                    <div><i class="fa-solid fa-cloud" style="color: #90a4ae;"></i> बादल (Cloud Cover)<br><span id="accu-cloud" style="color: var(--gov-blue);">--%</span></div>
-                                    <div><i class="fa-solid fa-cloud-rain" style="color: #2196f3;"></i> वर्षा (Precip 1h)<br><span id="accu-precip" style="color: var(--gov-blue);">-- mm</span></div>
+                                    <div><i class="fa-solid fa-droplet" style="color: #1976d2;"></i> Humidity<br><span
+                                            id="accu-humidity" style="color: var(--gov-blue);">--%</span></div>
+                                    <div><i class="fa-solid fa-wind" style="color: #607d8b;"></i> Wind<br><span
+                                            id="accu-wind" style="color: var(--gov-blue);">-- km/h</span></div>
+                                    <div><i class="fa-solid fa-eye" style="color: #795548;"></i> Visibility<br><span
+                                            id="accu-visibility" style="color: var(--gov-blue);">--
+                                            km</span></div>
+                                    <div><i class="fa-solid fa-sun" style="color: #ff9800;"></i> UV Index<br><span
+                                            id="accu-uv" style="color: var(--gov-blue);">--</span></div>
+                                    <div><i class="fa-solid fa-temperature-half" style="color: #e91e63;"></i> Dew
+                                        Point<br><span id="accu-dewpoint" style="color: var(--gov-blue);">--°C</span>
+                                    </div>
+                                    <div><i class="fa-solid fa-gauge-high" style="color: #9c27b0;"></i>
+                                        Pressure<br><span id="accu-pressure" style="color: var(--gov-blue);">--
+                                            mb</span></div>
+                                    <div><i class="fa-solid fa-cloud" style="color: #90a4ae;"></i> Cloud
+                                        Cover<br><span id="accu-cloud" style="color: var(--gov-blue);">--%</span></div>
+                                    <div><i class="fa-solid fa-cloud-rain" style="color: #2196f3;"></i> Precip
+                                        1h<br><span id="accu-precip" style="color: var(--gov-blue);">-- mm</span></div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Agriculture-Specific Data -->
-                        <div class="weather-block" style="background: #e3f2fd; border-color: var(--gov-blue); margin-bottom: 15px;">
-                            <h3 style="color: var(--gov-blue);"><i class="fa-solid fa-seedling"></i> कृषि मौसम डेटा (Agri-Weather Data)</h3>
-                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 12px; text-align: center;">
-                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                        <div class="weather-block"
+                            style="background: #e3f2fd; border-color: var(--gov-blue); margin-bottom: 15px;">
+                            <h3 style="color: var(--gov-blue);"><i class="fa-solid fa-seedling"></i> Agri-Weather Data
+                            </h3>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 12px; text-align: center;">
+                                <div
+                                    style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
                                     <i class="fa-solid fa-water" style="color: #0288d1; font-size: 1.3rem;"></i>
-                                    <div style="margin-top: 4px; color: #555;">वाष्पीकरण<br><span style="font-size:10px;">(Evapotranspiration)</span></div>
+                                    <div style="margin-top: 4px; color: #555;">Evapotranspiration<br><span
+                                            style="font-size:10px;">(Evapotranspiration)</span></div>
                                     <span id="accu-evap" style="color: var(--gov-blue);">-- mm</span>
                                 </div>
-                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                <div
+                                    style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
                                     <i class="fa-solid fa-solar-panel" style="color: #f57f17; font-size: 1.3rem;"></i>
-                                    <div style="margin-top: 4px; color: #555;">सौर विकिरण<br><span style="font-size:10px;">(Solar Irradiance)</span></div>
+                                    <div style="margin-top: 4px; color: #555;">Solar Radiation<br><span
+                                            style="font-size:10px;">(Solar Irradiance)</span></div>
                                     <span id="accu-solar" style="color: var(--gov-blue);">-- W/m²</span>
                                 </div>
-                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                <div
+                                    style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
                                     <i class="fa-solid fa-sun" style="color: #ff6f00; font-size: 1.3rem;"></i>
-                                    <div style="margin-top: 4px; color: #555;">धूप के घंटे<br><span style="font-size:10px;">(Hours of Sun)</span></div>
+                                    <div style="margin-top: 4px; color: #555;">Sunshine Hours<br><span
+                                            style="font-size:10px;">(Hours of Sun)</span></div>
                                     <span id="accu-sunhours" style="color: var(--gov-blue);">-- hrs</span>
                                 </div>
-                                <div style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
-                                    <i class="fa-solid fa-cloud-showers-heavy" style="color: #1565c0; font-size: 1.3rem;"></i>
-                                    <div style="margin-top: 4px; color: #555;">वर्षा संभावना<br><span style="font-size:10px;">(Rain Probability)</span></div>
+                                <div
+                                    style="background: white; padding: 10px; border-radius: 4px; border: 1px solid #bbdefb;">
+                                    <i class="fa-solid fa-cloud-showers-heavy"
+                                        style="color: #1565c0; font-size: 1.3rem;"></i>
+                                    <div style="margin-top: 4px; color: #555;">Rain Probability<br><span
+                                            style="font-size:10px;">(Next 12h)</span></div>
                                     <span id="accu-rainprob" style="color: var(--gov-blue);">--%</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 5-Day Forecast Table -->
-                        <h3 style="font-size: 14px; color: var(--gov-blue);"><i class="fa-solid fa-calendar-days"></i> 5-दिन का पूर्वानुमान (5-Day Forecast)</h3>
+                        <h3 style="font-size: 14px; color: var(--gov-blue);"><i class="fa-solid fa-calendar-days"></i>
+                            5-Day Forecast</h3>
                         <table class="forecast-table">
                             <thead>
                                 <tr>
-                                    <th>दिनांक (Date)</th>
-                                    <th>दिन / रात (Day / Night)</th>
-                                    <th>अधि./न्यून. (Max/Min)</th>
-                                    <th>वर्षा % (Rain)</th>
-                                    <th>कृषि सलाह (Advisory)</th>
+                                    <th>Date</th>
+                                    <th>Day / Night</th>
+                                    <th>Max/Min (Max/Min)</th>
+                                    <th>Precipitation % (Rain)</th>
+                                    <th>Advisory</th>
                                 </tr>
                             </thead>
                             <tbody id="accu-forecast-body">
-                                <tr><td colspan="5" style="text-align:center; color: #888;"><i class="fa-solid fa-spinner fa-spin"></i> पूर्वानुमान लोड हो रहा है...</td></tr>
+                                <tr>
+                                    <td colspan="5" style="text-align:center; color: #888;"><i
+                                            class="fa-solid fa-spinner fa-spin"></i> Loading forecast...</td>
+                                </tr>
                             </tbody>
                         </table>
-
-                        <!-- Temperature Trend Chart -->
-                        <div style="margin-top: 15px;">
-                            <h3 style="font-size: 14px; color: var(--gov-blue);"><i class="fa-solid fa-chart-line"></i> 5-दिन तापमान रुझान (Temperature Trend)</h3>
-                            <div style="height: 180px; position: relative;">
-                                <canvas id="tempChart"></canvas>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-chart-area"></i> ऐतिहासिक उपज डेटा - गेहूं (Historical Yield Data - Wheat)</div>
+                    <div class="panel-header"
+                        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <div><i class="fa-solid fa-chart-area"></i> Historical Agri Data</div>
+                        <div style="display: flex; gap: 10px; font-size: 12px; font-weight: normal;">
+                            <select id="chart-metric-select" onchange="fetchYieldData()"
+                                style="padding: 4px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="Yield">Yield (टन/हे.)</option>
+                                <option value="Production">Production ('000 टन)</option>
+                                <option value="Area">Area ('000 हे.)</option>
+                            </select>
+                            <select id="chart-season-select" onchange="fetchYieldData()"
+                                style="padding: 4px; border-radius: 4px; border: 1px solid #ccc;">
+                                <option value="Total">Total/Whole Year</option>
+                                <option value="Kharif">Kharif</option>
+                                <option value="Rabi">Rabi</option>
+                                <option value="Summer">Summer</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="panel-body">
+                        <div id="crop-checkboxes-container"
+                            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; font-size: 12px;">
+                            <!-- Checkboxes will be populated here -->
+                        </div>
                         <div style="height: 250px; position:relative;">
                             <canvas id="yieldChart"></canvas>
                         </div>
-                        <p style="font-size: 12px; margin-top: 10px; color: var(--text-muted);">Data shows average yield
-                            पिछले 5 वर्षों में भोपाल जिले की औसत उपज प्रति हेक्टेयर। (Average yield per hectare for the last 5 years in Bhopal District.)</p>
+                        <p
+                            style="font-size: 12px; margin-top: 10px; color: var(--text-muted); display: flex; justify-content: space-between;">
+                            <span id="chart-status-text">Data loading...</span>
+                            <span id="chart-region-text" style="font-weight: bold; color: var(--gov-blue);">Madhya
+                                Pradesh</span>
+                        </p>
                     </div>
                 </div>
 
@@ -231,77 +312,102 @@
 
 
                 <div class="panel">
-                    <div class="panel-header"><i class="fa-solid fa-robot"></i> AI फसल सलाह (AI Crop Advisory)</div>
+                    <div class="panel-header"><i class="fa-solid"></i> Crop Advisory</div>
                     <div class="panel-body" id="ai-advisory-panel">
-                        <div id="ai-advisory-content" style="text-align:center; padding: 20px 10px; color: #888;">
-                            <i class="fa-solid fa-satellite-dish" style="font-size:2rem; color: var(--gov-blue); display:block; margin-bottom:10px;"></i>
-                            <div style="font-size:13px; font-weight:600;">स्थान की प्रतीक्षा है</div>
-                            <div style="font-size:11px; margin-top:5px;">(AI farming advice will appear once your location is detected)</div>
+                        <div id="ai-advisory-content"
+                            style="padding: 10px; color: #333; font-size: 13px; border-bottom: 1px solid #eee; margin-bottom: 10px;">
+                            <div style="text-align:center; color: #888;">
+                                <i class="fa-solid fa-satellite-dish"
+                                    style="font-size:2rem; color: var(--gov-blue); display:block; margin-bottom:10px;"></i>
+                                <div style="font-size:13px; font-weight:600;">Waiting for Location</div>
+                                <div style="font-size:11px; margin-top:5px;">(AI farming advice will appear once your
+                                    location is detected)</div>
+                            </div>
                         </div>
-                        <img src="farmer2.png" id="advisory-farmer-img" alt="Indian woman farmer in wheat field" style="margin-top:10px;">
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="ai-advisory-input" placeholder="Ask AI..."
+                                style="flex:1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;"
+                                onkeypress="if(event.key==='Enter') sendAIAdvisoryQuery()">
+                            <button onclick="sendAIAdvisoryQuery()"
+                                style="background: var(--gov-blue); color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="panel">
-                    <div class="panel-header">अलर्ट पंजीकरण (Alert Registration)</div>
+                    <div class="panel-header">Alert Registration</div>
                     <div class="panel-body">
                         <form class="gov-form" id="alert-form" onsubmit="subscribeAlerts(event)">
                             <div style="margin-bottom: 10px;">
-                                <label style="font-size:12px; font-weight:bold;">मोबाइल नंबर (Mobile Number):</label>
-                                <input type="tel" id="sub-mobile" placeholder="10 अंक (10 digits)" pattern="[0-9]{10}" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <label style="font-size:12px; font-weight:bold;">Mobile Number:</label>
+                                <input type="tel" id="sub-mobile" placeholder="10 10 digits" pattern="[0-9]{10}"
+                                    required
+                                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                             </div>
-                            
+
                             <div style="margin-bottom: 10px;">
-                                <label style="font-size:12px; font-weight:bold;">फसलें (Crops):</label>
-                                <input type="text" id="sub-crops" placeholder="e.g. Wheat, Soybean" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <label style="font-size:12px; font-weight:bold;">Crops:</label>
+                                <input type="text" id="sub-crops" placeholder="e.g. Wheat, Soybean"
+                                    style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                             </div>
-                            
+
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
                                 <div>
-                                    <label style="font-size:12px; font-weight:bold;">खेत का आकार (Acres):</label>
-                                    <input type="number" id="sub-size" placeholder="e.g. 5" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                    <label style="font-size:12px; font-weight:bold;">Acres:</label>
+                                    <input type="number" id="sub-size" placeholder="e.g. 5"
+                                        style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                                 </div>
                                 <div>
-                                    <label style="font-size:12px; font-weight:bold;">सिंचाई (Irrigation):</label>
-                                    <select id="sub-irrigation" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <option value="rainfed">वर्षा आधारित (Rainfed)</option>
-                                        <option value="drip">ड्रिप (Drip)</option>
-                                        <option value="sprinkler">स्प्रिंकलर (Sprinkler)</option>
-                                        <option value="flood">बाढ़ (Flood)</option>
+                                    <label style="font-size:12px; font-weight:bold;">Irrigation:</label>
+                                    <select id="sub-irrigation"
+                                        style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                        <option value="rainfed">Rainfed</option>
+                                        <option value="drip">Drip</option>
+                                        <option value="sprinkler">Sprinkler</option>
+                                        <option value="flood">Flood</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                                <label style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:4px;">
+                                <label
+                                    style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:4px;">
                                     <input type="radio" name="sub-lang" value="hi" checked> हिन्दी
                                 </label>
-                                <label style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:4px;">
+                                <label
+                                    style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:4px;">
                                     <input type="radio" name="sub-lang" value="en"> English
                                 </label>
                             </div>
 
                             <div style="margin-bottom: 15px;">
-                                <label style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:8px;">
-                                    <input type="checkbox" id="sub-wa" checked> 
-                                    व्हाट्सऐप अलर्ट प्राप्त करें (Receive WhatsApp Alerts)
+                                <label
+                                    style="font-size:12px; font-weight:bold; display:flex; align-items:center; gap:8px;">
+                                    <input type="checkbox" id="sub-wa" checked>
+                                    Receive WhatsApp Alerts
                                 </label>
                             </div>
 
-                            <button type="submit" id="sub-btn" style="width: 100%; background: var(--gov-blue); color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
-                                सब्सक्राइब करें (Subscribe)
+                            <button type="submit" id="sub-btn"
+                                style="width: 100%; background: var(--gov-blue); color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                                Subscribe
                             </button>
                         </form>
                     </div>
                 </div>
 
                 <div class="panel">
-                    <div class="panel-header">हाल के लॉग (Recent Logs)</div>
+                    <div class="panel-header">Recent Logs</div>
                     <div class="panel-body">
                         <ul class="alerts-list">
-                            <li><span class="time">आज, 08:00 AM</span> वर्षा संभावना 85%। सिंचाई स्थगित करें। (Rain probability 85%. Delay irrigation.)</li>
-                            <li class="critical"><span class="time">कल, 18:30 PM</span> रात में तेज़ हवा की संभावना। उपकरण सुरक्षित करें। (High winds expected. Secure equipment.)</li>
-                            <li><span class="time">23 अप्रैल, 06:15 AM</span> सोयाबीन की कीमत APMC मंडी में साप्ताहिक उच्चतम। (Soybean prices reached weekly high.)</li>
+                            <li><span class="time">आज, 08:00 AM</span> Precipitation संभावना 85%Rain
+                                probability 85%. Delay irrigation.</li>
+                            <li class="critical"><span class="time">कल, 18:30 PM</span> High winds expected. Secure
+                                equipment.</li>
+                            <li><span class="time">23 अप्रैल, 06:15 AM</span> सोयाबीन की कीमत APMC Soybean prices
+                                reached weekly high.</li>
                         </ul>
                     </div>
                 </div>
@@ -309,28 +415,38 @@
             </aside>
         </main>
 
-        <!-- Half Page News, Schemes & E-Paper Section -->
-        <div class="half-page-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 30px 20px 30px;">
-            <!-- Regional News -->
-            <div class="panel" id="regional-news-panel" style="margin: 0; height: 100%;">
-                <div class="panel-header" id="regional-news-header" style="font-size: 16px; padding: 15px;">क्षेत्रीय समाचार (Madhya Pradesh)</div>
-                <div class="panel-body yojana-viewport"
-                    style="background-color: var(--content-bg); height: 33vh; padding: 0; overflow: hidden;">
-                    <div class="yojana-scroller" id="regional-news-scroller">
-                        <ul id="regional-news-list" style="list-style: none; padding: 10px 15px; margin: 0;">
-                            <li class="yojana-item">
-                                <i class="fa-solid fa-spinner fa-spin"></i> Fetching real-time news updates...
-                            </li>
-                        </ul>
+        <!-- Half Page: E-Paper + Yojana Portal -->
+        <div class="half-page-container"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 30px 20px 30px;">
+
+            <!-- Daily E-Paper (was Regional News slot) -->
+            <div class="panel" id="epaper-panel" style="margin: 0;">
+                <div class="panel-header"
+                    style="font-size: 15px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <span><i class="fa-solid fa-newspaper"></i> कृषि दर्पण — Daily E-Paper</span>
+                    <span style="font-size:11px; font-weight:400; color:#888;">कृषि समाचार पत्र</span>
+                </div>
+                <!-- Autoscroll viewport matching Yojana -->
+                <div class="panel-body yojana-viewport" id="epaper-scroll-area"
+                    style="height: 38vh; padding: 0; overflow: hidden; background-color: var(--content-bg);">
+                    <!-- The scrolling wrapper -->
+                    <div class="yojana-scroller">
+                        <div id="epaper-content"
+                            style="display: flex; flex-direction: column; gap: 10px; padding: 10px 12px;">
+                            <div style="text-align:center; color:#888; padding:30px 0;">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Loading e-paper...
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Yojana Portal -->
             <div class="panel" id="yojana-panel" style="margin: 0; height: 100%;">
-                <div class="panel-header" style="font-size: 16px; padding: 15px;">Yojana Portal (Live Government Schemes)</div>
+                <div class="panel-header" style="font-size: 15px; padding: 12px 15px;">Yojana Portal (Live Government
+                    Schemes)</div>
                 <div class="panel-body yojana-viewport"
-                    style="background-color: var(--content-bg); height: 33vh; padding: 0; overflow: hidden;">
+                    style="background-color: var(--content-bg); height: 38vh; padding: 0; overflow: hidden;">
                     <div class="yojana-scroller" id="yojana-scroller">
                         <ul id="yojana-list" style="list-style: none; padding: 10px 15px; margin: 0;">
                             <li class="yojana-item">
@@ -342,22 +458,193 @@
             </div>
         </div>
 
-        <!-- Daily E-Paper Section -->
-        <div id="section-epaper" style="padding: 0 30px 30px 30px;">
-            <div class="panel" style="margin: 0;">
-                <div class="panel-header" style="font-size: 16px; padding: 15px;">
-                    <i class="fa-solid fa-newspaper"></i> कृषि दर्पण — Daily E-Paper
-                    <span style="font-size:11px; font-weight:400; margin-left:10px; color:#777;">कृषि समाचार पत्र</span>
-                </div>
-                <div class="panel-body" id="epaper-body" style="padding: 15px;">
-                    <div id="epaper-content" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:15px;">
-                        <div style="text-align:center; color:#888; grid-column:1/-1; padding:20px;">
-                            <i class="fa-solid fa-spinner fa-spin"></i> Loading e-paper...
-                        </div>
+        <!-- ── Useful Links Carousel ─────────────────────────── -->
+        <section id="useful-links-section" style="
+            background: linear-gradient(135deg, #e8f0fe 0%, #f0f4ff 50%, #e3f2fd 100%);
+            border-top: 2px solid #1565c0;
+            border-bottom: 2px solid #1565c0;
+            padding: 14px 0;
+            overflow: hidden;
+            position: relative;
+        ">
+            <!-- Subtle background pattern -->
+            <div
+                style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%, rgba(21,101,192,0.06) 0%,transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(21,101,192,0.04) 0%,transparent 60%);pointer-events:none;">
+            </div>
+
+            <div style="display:flex;align-items:center;gap:10px;padding:0 10px;position:relative;">
+
+                <!-- Label pill -->
+                <div style="
+                    flex-shrink: 0;
+                    background: linear-gradient(135deg, #1565c0, #1e88e5);
+                    color: #fff;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    padding: 6px 12px;
+                    border-radius: 20px;
+                    white-space: nowrap;
+                    box-shadow: 0 2px 8px rgba(21,101,192,0.35);
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                "><i class="fa-solid fa-link" style="font-size:9px;"></i> Useful Links</div>
+
+                <!-- Prev arrow -->
+                <button id="ul-prev" onclick="usefulLinksScroll(-1)" style="
+                    flex-shrink: 0;
+                    background: #fff;
+                    border: 1.5px solid #c5d8f5;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    font-size: 15px;
+                    color: #1565c0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                    transition: all 0.2s;
+                " onmouseenter="this.style.background='#1565c0';this.style.color='#fff';this.style.borderColor='#1565c0'"
+                    onmouseleave="this.style.background='#fff';this.style.color='#1565c0';this.style.borderColor='#c5d8f5'">&#8249;</button>
+
+                <!-- Scrolling track -->
+                <div id="ul-track-wrap" style="flex:1;overflow:hidden;position:relative;">
+                    <div id="ul-track" style="
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+                        will-change: transform;
+                        padding: 4px 0;
+                    ">
+                        <!-- items injected by JS -->
                     </div>
                 </div>
+
+                <!-- Next arrow -->
+                <button id="ul-next" onclick="usefulLinksScroll(1)" style="
+                    flex-shrink: 0;
+                    background: #fff;
+                    border: 1.5px solid #c5d8f5;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                    font-size: 15px;
+                    color: #1565c0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                    transition: all 0.2s;
+                " onmouseenter="this.style.background='#1565c0';this.style.color='#fff';this.style.borderColor='#1565c0'"
+                    onmouseleave="this.style.background='#fff';this.style.color='#1565c0';this.style.borderColor='#c5d8f5'">&#8250;</button>
             </div>
-        </div>
+        </section>
+
+        <script>
+            (function () {
+                const links = [
+                    { name: "Swachh Bharat", url: "https://swachhbharatmission.gov.in/sbmcms/index.htm", img: "media/images/01_swachh-bharat-swachh-vidyalaya_6bae7fa5d5d33686a577.webp" },
+                    { name: "Gandhi 150", url: "https://gandhi.gov.in/", img: "media/images/02_150-years-of-celebrating-the-mahatma_352bffe074ac39f7ea93.webp" },
+                    { name: "DA&FW", url: "https://desagri.gov.in/", img: "media/images/03_desagri_6bc610af6c701e8046db.webp" },
+                    { name: "Ministry of Agriculture", url: "https://agricoop.gov.in/", img: "media/images/04_agricrop_d08144061ac03b7eda68.webp" },
+                    { name: "Cashless India", url: "http://cashlessindia.gov.in/", img: "media/images/05_cashlessindia_a435d52e2b2adeb9cc42.webp" },
+                    { name: "Public Grievances", url: "https://pgportal.gov.in/", img: "media/images/06_public_841db1d5134579c3dd27.webp" },
+                    { name: "Web Directory", url: "https://igod.gov.in/", img: "media/images/07_webdirectory_d06a80873b8e5c9c9e47.webp" },
+                    { name: "Digital India", url: "https://www.digitalindia.gov.in/", img: "media/images/08_degitalindia_d7ab3b87323aad605594.webp" },
+                    { name: "MyGov", url: "https://www.mygov.in/", img: "media/images/09_mygov_c6a6a7d12798b29293f7.webp" },
+                    { name: "Make in India", url: "https://www.makeinindia.com/", img: "media/images/10_makeinindia_47ba043338f38b27bf1d.webp" },
+                    { name: "Data.gov.in", url: "https://data.gov.in/", img: "media/images/11_datagov_a584252a2ae35f5f0a20.webp" },
+                    { name: "India.gov.in", url: "https://www.india.gov.in/", img: "media/images/12_indiagov_ac592299511d4df2ffa8.webp" },
+                    { name: "Jal Shakti", url: "https://ejalshakti.gov.in/JSA/JSA/Home.aspx", img: "media/images/13_jal-shakti-abhiyan-sanchay-jal-behtar-kal_7ae85388532fbaae56.webp" }
+                ];
+
+                const ITEM_WIDTH = 160; // px per card + gap
+                let current = 0;
+                let autoTimer;
+                const track = document.getElementById('ul-track');
+
+                // Build items × 2 for seamless loop
+                [...links, ...links].forEach(l => {
+                    const a = document.createElement('a');
+                    a.href = l.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.title = l.name;
+                    a.style.cssText = `
+                    flex-shrink: 0;
+                    width: 148px;
+                    height: 64px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 8px 10px;
+                    background: #ffffff;
+                    border-radius: 12px;
+                    border: 1.5px solid #dce9fa;
+                    box-shadow: 0 2px 8px rgba(21,101,192,0.08);
+                    transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+                    cursor: pointer;
+                    text-decoration: none;
+                    gap: 4px;
+                `;
+                    a.onmouseenter = () => {
+                        a.style.boxShadow = '0 6px 18px rgba(21,101,192,0.22)';
+                        a.style.transform = 'translateY(-3px) scale(1.04)';
+                        a.style.borderColor = '#1565c0';
+                    };
+                    a.onmouseleave = () => {
+                        a.style.boxShadow = '0 2px 8px rgba(21,101,192,0.08)';
+                        a.style.transform = '';
+                        a.style.borderColor = '#dce9fa';
+                    };
+
+                    const img = document.createElement('img');
+                    img.src = l.img;
+                    img.alt = l.name;
+                    img.style.cssText = 'max-height:40px; max-width:120px; object-fit:contain; display:block; border-radius:4px;';
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        const sp = document.createElement('span');
+                        sp.textContent = l.name;
+                        sp.style.cssText = 'font-size:10px;color:#1565c0;text-align:center;font-weight:700;line-height:1.2;';
+                        a.appendChild(sp);
+                    };
+                    a.appendChild(img);
+                    track.appendChild(a);
+                });
+
+                function goTo(idx) {
+                    if (idx >= links.length) idx = 0;
+                    if (idx < 0) idx = links.length - 1;
+                    current = idx;
+                    track.style.transform = `translateX(-${current * ITEM_WIDTH}px)`;
+                }
+
+                window.usefulLinksScroll = function (dir) {
+                    clearInterval(autoTimer);
+                    goTo(current + dir);
+                    startAuto();
+                };
+
+                function startAuto() {
+                    autoTimer = setInterval(() => goTo(current + 1), 2400);
+                }
+
+                goTo(0);
+                startAuto();
+
+                const wrap = document.getElementById('ul-track-wrap');
+                wrap.addEventListener('mouseenter', () => clearInterval(autoTimer));
+                wrap.addEventListener('mouseleave', startAuto);
+            })();
+        </script>
 
         <!-- Footer (agmarknet.gov.in pattern) -->
         <footer style="background: #1565c0 url('data:image/svg+xml,\
@@ -377,9 +664,11 @@
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
                         <i class="fa-solid fa-wheat-awn" style="font-size: 2.4rem; color: #fff;"></i>
                         <div>
-                            <div style="font-size: 15px; font-weight: bold;">कृषि-उद्यमी</div>
-                            <div style="font-size: 11px; opacity: 0.85;">Agricultural Intelligence & Weather Portal</div>
-                            <div style="font-size: 10px; opacity: 0.7;">Made by Abhishek Vishwakarma & Team The Smurfs</div>
+                            <div style="font-size: 15px; font-weight: bold;">Krishi-Udyami</div>
+                            <div style="font-size: 11px; opacity: 0.85;">Agricultural Intelligence & Weather Portal
+                            </div>
+                            <div style="font-size: 10px; opacity: 0.7;">Made by Abhishek Vishwakarma & Team The Smurfs
+                            </div>
                         </div>
                     </div>
                     <div style="font-size: 12px; margin-bottom: 10px; opacity: 0.9;">
@@ -387,53 +676,85 @@
                     </div>
                     <!-- Social Icons Row -->
                     <div style="display: flex; gap: 12px; margin-top: 10px;">
-                        <a href="https://twitter.com/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://youtube.com/@azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://github.com/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://linkedin.com/in/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://instagram.com/azhishek" target="_blank" style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://twitter.com/azhishek" target="_blank"
+                            style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://youtube.com/@azhishek" target="_blank"
+                            style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i
+                                class="fa-brands fa-youtube"></i></a>
+                        <a href="https://github.com/azhishek" target="_blank"
+                            style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com/in/azhishek" target="_blank"
+                            style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/azhishek" target="_blank"
+                            style="color: white; font-size: 17px; background: rgba(255,255,255,0.15); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;"><i
+                                class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <!-- Col 2: Useful Links -->
                 <div>
-                    <div style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">उपयोगी लिंक (USEFUL LINKS)</div>
+                    <div
+                        style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">
+                        USEFUL LINKS</div>
                     <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2.3;">
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">हमारे बारे में (About Us)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">संपर्क करें (Contact Us)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">पहुँच (Accessibility)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">प्रतिक्रिया (Feedback)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">About Us</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Contact Us</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Accessibility</a>
+                        </li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Feedback</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Quick Links -->
                 <div>
-                    <div style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">त्वरित लिंक (QUICK LINKS)</div>
+                    <div
+                        style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">
+                        QUICK LINKS</div>
                     <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2.3;">
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">वेबसाइट नीति (Website Policy)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">गोपनीयता नीति (Privacy Policy)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">हाइपरलिंकिंग नीति (Hyperlinking)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">अस्वीकरण (Disclaimer)</a></li>
-                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">साइटमैप (Sitemap)</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Website Policy</a>
+                        </li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Hyperlinking</a>
+                        </li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Disclaimer</a></li>
+                        <li><a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Sitemap</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 4: Government Sites -->
                 <div>
-                    <div style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">सरकारी साइटें (GOV SITES)</div>
+                    <div
+                        style="font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.95;">
+                        GOV SITES</div>
                     <ul style="list-style: none; padding: 0; font-size: 12px; line-height: 2.3;">
-                        <li><a href="https://agmarknet.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">AGMARKNET <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
-                        <li><a href="https://pmkisan.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">PM-KISAN <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
-                        <li><a href="https://pmfby.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">PMFBY (फसल बीमा) <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
-                        <li><a href="https://enam.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">e-NAM Portal <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
-                        <li><a href="https://agriculture.gov.in" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none;">Min. of Agriculture <i class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://agmarknet.gov.in" target="_blank"
+                                style="color: rgba(255,255,255,0.8); text-decoration: none;">AGMARKNET <i
+                                    class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://pmkisan.gov.in" target="_blank"
+                                style="color: rgba(255,255,255,0.8); text-decoration: none;">PM-KISAN <i
+                                    class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://pmfby.gov.in" target="_blank"
+                                style="color: rgba(255,255,255,0.8); text-decoration: none;">PMFBY (Crop Insurance) <i
+                                    class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://enam.gov.in" target="_blank"
+                                style="color: rgba(255,255,255,0.8); text-decoration: none;">e-NAM Portal <i
+                                    class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
+                        <li><a href="https://agriculture.gov.in" target="_blank"
+                                style="color: rgba(255,255,255,0.8); text-decoration: none;">Min. of Agriculture <i
+                                    class="fa-solid fa-up-right-from-square" style="font-size:9px;"></i></a></li>
                     </ul>
                 </div>
             </div>
 
             <!-- Bottom Dark Bar -->
-            <div style="background: rgba(0,0,0,0.35); padding: 10px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px;">
-                <span>Powered by <strong>Abhishek Vishwakarma & Team The Smurfs</strong> ◈ AccuWeather API ◈ Groq AI ◈ Leaflet.js ◈ Chart.js</span>
+            <div
+                style="background: rgba(0,0,0,0.35); padding: 10px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 11px;">
+                <span>Powered by <strong>Abhishek Vishwakarma & Team The Smurfs</strong> ◈ AccuWeather API ◈ Groq AI ◈
+                    Leaflet.js ◈ Chart.js</span>
                 <span>PAGE UPDATED ON : <strong>28-04-2026</strong></span>
             </div>
         </footer>
@@ -450,7 +771,7 @@
             <div style="display: flex; align-items: center; gap: 10px;">
                 <i class="fa-solid fa-robot fa-2x"></i>
                 <div>
-                    <div style="font-weight: bold; font-size: 16px;">कृषि-मित्र (Chatbot)</div>
+                    <div style="font-weight: bold; font-size: 16px;">Krishi-Mitra (Chatbot)</div>
                     <div style="font-size: 11px; display: flex; align-items: center; gap: 4px;">
                         <span
                             style="display:inline-block; width:8px; height:8px; background-color:#4CAF50; border-radius:50%;"></span>
@@ -459,7 +780,9 @@
                 </div>
             </div>
             <div style="cursor: pointer; display: flex; gap: 12px; align-items: center;">
-                <button id="tts-toggle" onclick="toggleTTS()" title="TTS बंद (OFF)" style="background:none;border:none;cursor:pointer;color:white;font-size:16px;"><i class="fa-solid fa-volume-xmark"></i></button>
+                <button id="tts-toggle" onclick="toggleTTS()" title="TTS OFF"
+                    style="background:none;border:none;cursor:pointer;color:white;font-size:16px;"><i
+                        class="fa-solid fa-volume-xmark"></i></button>
                 <i class="fa-solid fa-chevron-down" onclick="toggleChatbot()"></i>
                 <i class="fa-solid fa-xmark" onclick="toggleChatbot()"></i>
             </div>
@@ -506,6 +829,286 @@
     <script src="js/weather.js"></script>
     <script src="js/geo.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- OTP Login Modal -->
+    <div id="login-modal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.55); z-index:10001; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+        <div id="login-modal-box"
+            style="background:white; padding:32px 28px; border-radius:14px; width:100%; max-width:360px; position:relative; box-shadow:0 16px 40px rgba(0,0,0,0.25); animation: fadeInUp 0.3s ease-out; font-family:'Inter',sans-serif;">
+
+            <!-- Close -->
+            <i class="fa-solid fa-xmark" onclick="closeLoginModal()"
+                style="position:absolute; top:14px; right:16px; cursor:pointer; font-size:20px; color:#888;"></i>
+
+            <!-- Header -->
+            <div style="text-align:center; margin-bottom:24px;">
+                <div style="width:58px; height:58px; background:linear-gradient(135deg,#1565c0,#1e88e5); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+                    <i class="fa-solid fa-mobile-screen-button" style="font-size:24px; color:white;"></i>
+                </div>
+                <h2 style="margin:0 0 4px; font-weight:600; font-size:20px; color:#1a1a2e;">Farmer Portal Login</h2>
+                <p style="margin:0; font-size:12px; color:#888;">Secure OTP-based authentication</p>
+            </div>
+
+            <!-- Step 1: Mobile -->
+            <div id="otp-step-1">
+                <label style="display:block; margin-bottom:6px; font-size:13px; font-weight:500; color:#444;">Mobile Number</label>
+                <div style="position:relative; margin-bottom:18px;">
+                    <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:13px; color:#555; font-weight:600;">+91</span>
+                    <input id="otp-mobile-input" type="tel" maxlength="10" placeholder="10-digit mobile number"
+                        oninput="this.value=this.value.replace(/\D/g,'')"
+                        onkeydown="if(event.key==='Enter') otpSendCode()"
+                        style="width:100%; padding:11px 12px 11px 46px; border:1.5px solid #ddd; border-radius:8px; outline:none; font-size:14px; transition:border-color 0.2s; box-sizing:border-box;"
+                        onfocus="this.style.borderColor='#1565c0'" onblur="this.style.borderColor='#ddd'">
+                </div>
+                <button id="otp-send-btn" onclick="otpSendCode()"
+                    style="width:100%; padding:12px; background:linear-gradient(135deg,#1565c0,#1e88e5); color:white; border:none; border-radius:8px; cursor:pointer; font-size:15px; font-weight:600; letter-spacing:0.3px; transition:opacity 0.2s;"
+                    onmouseenter="this.style.opacity='0.9'" onmouseleave="this.style.opacity='1'">
+                    <i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Send OTP
+                </button>
+                <p id="otp-step1-msg" style="margin:10px 0 0; font-size:12px; text-align:center; min-height:18px;"></p>
+            </div>
+
+            <!-- Step 2: OTP Entry (hidden initially) -->
+            <div id="otp-step-2" style="display:none;">
+                <div style="background:#e8f4fd; border-radius:8px; padding:12px 14px; margin-bottom:18px; display:flex; align-items:center; gap:10px;">
+                    <i class="fa-solid fa-circle-check" style="color:#1565c0; font-size:18px; flex-shrink:0;"></i>
+                    <div>
+                        <div style="font-size:13px; font-weight:600; color:#1565c0;">OTP Sent!</div>
+                        <div id="otp-sent-hint" style="font-size:11px; color:#555; margin-top:2px;"></div>
+                    </div>
+                </div>
+
+                <label style="display:block; margin-bottom:6px; font-size:13px; font-weight:500; color:#444;">Enter 6-digit OTP</label>
+                <input id="otp-code-input" type="tel" maxlength="6" placeholder="• • • • • •"
+                    oninput="this.value=this.value.replace(/\D/g,''); otpAutoVerify(this.value)"
+                    onkeydown="if(event.key==='Enter') otpVerifyCode()"
+                    style="width:100%; padding:13px 16px; border:1.5px solid #ddd; border-radius:8px; outline:none; font-size:22px; letter-spacing:10px; text-align:center; transition:border-color 0.2s; box-sizing:border-box;"
+                    onfocus="this.style.borderColor='#1565c0'" onblur="this.style.borderColor='#ddd'">
+
+                <div style="display:flex; gap:10px; margin-top:14px;">
+                    <button onclick="otpGoBack()"
+                        style="flex:1; padding:11px; background:white; color:#1565c0; border:1.5px solid #1565c0; border-radius:8px; cursor:pointer; font-size:14px; font-weight:500; transition:all 0.2s;"
+                        onmouseenter="this.style.background='#f0f6ff'" onmouseleave="this.style.background='white'">
+                        <i class="fa-solid fa-arrow-left" style="margin-right:6px;"></i>Back
+                    </button>
+                    <button id="otp-verify-btn" onclick="otpVerifyCode()"
+                        style="flex:2; padding:11px; background:linear-gradient(135deg,#1565c0,#1e88e5); color:white; border:none; border-radius:8px; cursor:pointer; font-size:14px; font-weight:600; transition:opacity 0.2s;"
+                        onmouseenter="this.style.opacity='0.9'" onmouseleave="this.style.opacity='1'">
+                        <i class="fa-solid fa-lock-open" style="margin-right:6px;"></i>Verify & Login
+                    </button>
+                </div>
+
+                <p id="otp-step2-msg" style="margin:10px 0 0; font-size:12px; text-align:center; min-height:18px;"></p>
+
+                <div style="text-align:center; margin-top:12px;">
+                    <span id="otp-resend-timer" style="font-size:12px; color:#888;"></span>
+                    <button id="otp-resend-btn" onclick="otpResend()" style="display:none; background:none; border:none; color:#1565c0; font-size:12px; cursor:pointer; text-decoration:underline; padding:0;">
+                        Resend OTP
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Success (hidden initially) -->
+            <div id="otp-step-3" style="display:none; text-align:center;">
+                <div style="width:64px; height:64px; background:linear-gradient(135deg,#2e7d32,#43a047); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+                    <i class="fa-solid fa-check" style="font-size:28px; color:white;"></i>
+                </div>
+                <h3 style="margin:0 0 8px; color:#2e7d32; font-size:18px;">Login Successful!</h3>
+                <p style="margin:0 0 20px; font-size:13px; color:#666;" id="otp-success-msg"></p>
+                <button onclick="closeLoginModal()"
+                    style="padding:11px 28px; background:linear-gradient(135deg,#2e7d32,#43a047); color:white; border:none; border-radius:8px; cursor:pointer; font-size:14px; font-weight:600;">
+                    Continue to Portal
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let _otpMobile = '';
+        let _otpResendTimer = null;
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+            // Reset to step 1
+            setTimeout(otpReset, 300);
+        }
+
+        function otpReset() {
+            _otpMobile = '';
+            clearInterval(_otpResendTimer);
+            document.getElementById('otp-mobile-input').value = '';
+            document.getElementById('otp-code-input').value = '';
+            document.getElementById('otp-step1-msg').textContent = '';
+            document.getElementById('otp-step2-msg').textContent = '';
+            document.getElementById('otp-step-1').style.display = 'block';
+            document.getElementById('otp-step-2').style.display = 'none';
+            document.getElementById('otp-step-3').style.display = 'none';
+            document.getElementById('otp-send-btn').disabled = false;
+            document.getElementById('otp-send-btn').innerHTML = '<i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Send OTP';
+        }
+
+        function otpSetMsg(stepId, msg, color) {
+            const el = document.getElementById(stepId);
+            el.textContent = msg;
+            el.style.color = color || '#e53935';
+        }
+
+        async function otpSendCode() {
+            const mobile = document.getElementById('otp-mobile-input').value.trim();
+            if (!/^[6-9]\d{9}$/.test(mobile)) {
+                otpSetMsg('otp-step1-msg', 'Enter a valid 10-digit mobile number starting with 6-9.', '#e53935');
+                return;
+            }
+            _otpMobile = mobile;
+            const btn = document.getElementById('otp-send-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i>Sending...';
+            otpSetMsg('otp-step1-msg', '');
+
+            try {
+                const res = await fetch(`${API_BASE}/auth/send-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mobile })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('otp-sent-hint').textContent =
+                        `OTP sent to +91 ${mobile.substring(0,5)}XXXXX. Valid for 5 minutes.`;
+                    // Show dev OTP if in development mode
+                    if (data.devOtp) {
+                        document.getElementById('otp-sent-hint').textContent += ` [DEV OTP: ${data.devOtp}]`;
+                    }
+                    document.getElementById('otp-step-1').style.display = 'none';
+                    document.getElementById('otp-step-2').style.display = 'block';
+                    document.getElementById('otp-code-input').focus();
+                    otpStartResendTimer(60);
+                } else {
+                    otpSetMsg('otp-step1-msg', data.error || 'Failed to send OTP.', '#e53935');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Send OTP';
+                }
+            } catch (err) {
+                otpSetMsg('otp-step1-msg', 'Network error. Is the server running?', '#e53935');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Send OTP';
+            }
+        }
+
+        function otpAutoVerify(val) {
+            if (val.length === 6) otpVerifyCode();
+        }
+
+        async function otpVerifyCode() {
+            const otp = document.getElementById('otp-code-input').value.trim();
+            if (otp.length !== 6) {
+                otpSetMsg('otp-step2-msg', 'Please enter the 6-digit OTP.', '#e53935');
+                return;
+            }
+            const btn = document.getElementById('otp-verify-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:6px;"></i>Verifying...';
+            otpSetMsg('otp-step2-msg', '');
+
+            // Read farm profile from localStorage (set by what-to-grow page)
+            let farmProfile = null;
+            try {
+                const raw = localStorage.getItem('krishi_farm_profile');
+                if (raw) farmProfile = JSON.parse(raw);
+            } catch (e) { /* ignore */ }
+
+            try {
+                const res = await fetch(`${API_BASE}/auth/verify-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mobile: _otpMobile, otp, farmProfile })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    clearInterval(_otpResendTimer);
+                    const welcomeLine = data.data?.isNewUser
+                        ? `Welcome! You're registered for weather & crop alerts.`
+                        : `Welcome back! Your farm profile has been updated.`;
+                    document.getElementById('otp-success-msg').textContent = welcomeLine;
+                    document.getElementById('otp-step-2').style.display = 'none';
+                    document.getElementById('otp-step-3').style.display = 'block';
+                    // Update header login button to show logged-in state
+                    const loginBtns = document.querySelectorAll('[onclick*="login-modal"]');
+                    loginBtns.forEach(b => {
+                        b.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#4caf50;"></i> Logged In';
+                        b.onclick = null;
+                        b.style.cursor = 'default';
+                    });
+                } else {
+                    otpSetMsg('otp-step2-msg', data.error || 'Verification failed.', '#e53935');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-lock-open" style="margin-right:6px;"></i>Verify & Login';
+                    document.getElementById('otp-code-input').value = '';
+                    document.getElementById('otp-code-input').focus();
+                }
+            } catch (err) {
+                otpSetMsg('otp-step2-msg', 'Network error. Please try again.', '#e53935');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-lock-open" style="margin-right:6px;"></i>Verify & Login';
+            }
+        }
+
+        function otpGoBack() {
+            document.getElementById('otp-step-2').style.display = 'none';
+            document.getElementById('otp-step-1').style.display = 'block';
+            document.getElementById('otp-send-btn').disabled = false;
+            document.getElementById('otp-send-btn').innerHTML = '<i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Send OTP';
+            clearInterval(_otpResendTimer);
+        }
+
+        function otpStartResendTimer(seconds) {
+            let remaining = seconds;
+            const timerEl = document.getElementById('otp-resend-timer');
+            const resendBtn = document.getElementById('otp-resend-btn');
+            resendBtn.style.display = 'none';
+            timerEl.textContent = `Resend OTP in ${remaining}s`;
+            clearInterval(_otpResendTimer);
+            _otpResendTimer = setInterval(() => {
+                remaining--;
+                if (remaining <= 0) {
+                    clearInterval(_otpResendTimer);
+                    timerEl.textContent = '';
+                    resendBtn.style.display = 'inline';
+                } else {
+                    timerEl.textContent = `Resend OTP in ${remaining}s`;
+                }
+            }, 1000);
+        }
+
+        async function otpResend() {
+            document.getElementById('otp-resend-btn').style.display = 'none';
+            document.getElementById('otp-code-input').value = '';
+            otpSetMsg('otp-step2-msg', '');
+            // Re-use send logic
+            try {
+                const res = await fetch(`${API_BASE}/auth/send-otp`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mobile: _otpMobile })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    otpSetMsg('otp-step2-msg', 'New OTP sent!', '#2e7d32');
+                    if (data.devOtp) {
+                        otpSetMsg('otp-step2-msg', `New OTP sent! [DEV: ${data.devOtp}]`, '#2e7d32');
+                    }
+                    otpStartResendTimer(60);
+                } else {
+                    otpSetMsg('otp-step2-msg', data.error || 'Failed to resend OTP.', '#e53935');
+                    document.getElementById('otp-resend-btn').style.display = 'inline';
+                }
+            } catch {
+                otpSetMsg('otp-step2-msg', 'Network error. Please try again.', '#e53935');
+                document.getElementById('otp-resend-btn').style.display = 'inline';
+            }
+        }
+    </script>
 </body>
 
 </html>

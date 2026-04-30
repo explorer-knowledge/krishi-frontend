@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What to Grow? | कृषि-उद्यमी Portal</title>
+    <title>What to Grow? | Krishi-Udyami Portal</title>
     <meta name="description" content="Discover the best crops to grow based on your soil type, location, and local climate data using AI-powered recommendations.">
     <link rel="preload" href="clean_hero.jpg" as="image" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,61 +16,67 @@
 </head>
 <body>
     <!-- Top Accessibility Bar -->
-    <div class="top-bar">
-        <div>भारत सरकार | Government of India</div>
-        <div>
-            <a href="javascript:void(0)">Screen Reader Access</a> |
-            <a href="javascript:void(0)" onclick="document.documentElement.lang='hi'">हिन्दी</a> |
-            <a href="javascript:void(0)" onclick="document.documentElement.lang='en'">English</a>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header>
-        <div class="header-left">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png"
-                 alt="Emblem of India" class="emblem">
-            <div class="ministry-info">
-                <h2>सत्यमेव जयते</h2>
-                <p>Digital India | Citizen Service</p>
-            </div>
-        </div>
-        <div class="header-right">
-            <div class="portal-badge">
-                <i class="fa-solid fa-wheat-awn"></i>
-                <div class="portal-badge-text">
-                    <b>कृषि-उद्यमी</b>
-                    <span>Agricultural Intelligence Portal</span>
+    <!-- Top Accessibility Nav -->
+    <div class="sticky-header-container">
+        <div class="top-bar">
+                <div>Krishi-Udyami Platform</div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <a href="javascript:void(0)">The Smurfs</a> |
+                    <div id="google_translate_element"></div>
                 </div>
             </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="index.html">मुखपृष्ठ (Home)</a></li>
-            <li><a href="what-to-grow.html" class="active">What to Grow?</a></li>
-            <li><a href="crop-analysis.html">Photo Crop Analysis</a></li>
-            <li><a href="market-price.html">Price of Crops</a></li>
-            <li><a href="advisory.html">AI Advisory</a></li>
-            <li><a href="npk-value.html">NPK Value</a></li>
-            <li><a href="community.html">Farmers Community</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-    </nav>
-
-    <!-- News Ticker -->
-    <div class="news-ticker">
-        <div class="ticker-title">LATEST UPDATE</div>
-        <div class="ticker-marquee-container">
-            <marquee behavior="scroll" direction="left" scrollamount="6">
-                <span class="ticker-item">◈ IMD ने मध्य प्रदेश में भारी वर्षा की चेतावनी जारी की। सोयाबीन कटाई 48 घंटे स्थगित करें।</span>
-                <span class="ticker-item">❖ पीएम-किसान की अगली किस्त सत्यापित खातों में जल्द जमा होगी।</span>
-                <span class="ticker-item">⬥ स्मार्ट सिंचाई सब्सिडी के लिए पंजीकरण खुला है।</span>
-                <span class="ticker-item">◇ गेहूं MSP ₹2,275 प्रति क्विंटल — 5% वृद्धि प्रस्तावित।</span>
-            </marquee>
-        </div>
+        
+            <header>
+                <div class="header-left">
+                    <img src="logo.png" alt="Jai Jawan Jai Kisan Logo" class="emblem">
+                    <div class="ministry-info">
+                        <h2>Jai Jawan Jai Kisan</h2>
+                        <p>Digital India | Citizen Service</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
+                        style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
+                            class="fa-solid fa-user"></i> Portal Login</button>
+                </div>
+            </header>
+        
+            <!-- Primary Menu (bilingual) -->
+            <nav class="primary-menu">
+                <ul>
+                    <li><a href="index.html" class="">Home</a></li>
+                    <li><a href="what-to-grow.html" class="active">What to Grow?</a></li>
+                    <li><a href="market-price.html" class="">Price of Crops</a></li>
+                    <li><a href="community.html" class="">Farmers Community</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="weather.html">Weather</a></li>
+                    <li><a href="schemes.html" class="">Schemes</a></li>
+                </ul>
+            </nav>
+        
+            <div class="news-ticker">
+                <div class="ticker-title">LATEST UPDATE</div>
+                <div class="ticker-marquee-container">
+                    <marquee behavior="scroll" direction="left" scrollamount="6">
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;PM-KISAN 19th
+                            installment will be released soon. Please complete e-KYC.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;PMFBY Rabi
+                            2025-26 enrollment is ongoing. Check the last date.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Kisan Credit Card
+                            loan at 4% interest — Apply Now.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Soil Health Card
+                            portal updated with new organic farming guidelines.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Subsidy of up to
+                            50% available on solar water pumps under PM-KUSUM.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Minimum Support
+                            Price (MSP) for Wheat increased to ₹2,275 per quintal.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Warning: Heavy
+                            rainfall expected in Central regions; delay harvesting.</span>
+                        <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Apply for
+                            National Horticulture Board (NHB) commercial farming grants.</span>
+                    </marquee>
+                </div>
+            </div>
     </div>
 
     <!-- Hero Banner -->
@@ -90,46 +96,116 @@
     <!-- Main Content -->
     <main class="container" style="min-height:50vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
         <div class="card animate-fade" style="max-width:900px;width:100%;padding:30px;">
-            <h1 style="font-size:36px;color:#002147;margin-bottom:15px; text-align: center;">What to Grow / क्या उगाएं?</h1>
+            <h1 style="font-size:36px;color:#002147;margin-bottom:15px; text-align: center;">What to Grow?</h1>
             <p style="font-size:18px;color:#555;line-height:1.6;margin-bottom:30px; text-align: center;">
                 Get AI-powered crop recommendations based on your land and season
             </p>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                <div class="form-panel" style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">State / राज्य:</label>
-                    <select id="state-select" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
-                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                        <option value="Maharashtra">Maharashtra</option>
-                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                        <option value="Punjab">Punjab</option>
-                    </select>
+                <div class="form-panel" style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #eee; max-height: 550px; overflow-y: auto;">
+                    <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 16px; color: var(--gov-blue); border-bottom: 2px solid var(--gov-blue); padding-bottom: 5px;">Basic Info</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">State:</label>
+                            <select id="state-select" onchange="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Punjab">Punjab</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">District:</label>
+                            <input type="text" id="district-input" placeholder="e.g. Bhopal" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
 
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Season / मौसम:</label>
-                    <select id="season-select" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
-                        <option value="Kharif">Kharif (Monsoon)</option>
-                        <option value="Rabi">Rabi (Winter)</option>
-                        <option value="Zaid">Zaid (Summer)</option>
-                    </select>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Season:</label>
+                            <select id="season-select" onchange="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="Kharif">Kharif (Monsoon)</option>
+                                <option value="Rabi">Rabi (Winter)</option>
+                                <option value="Zaid">Zaid (Summer)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Crop Type:</label>
+                            <input type="text" id="crop-type-input" placeholder="Optional (e.g. Grain)" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
 
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Soil Type / मिट्टी का प्रकार:</label>
-                    <select id="soil-select" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
-                        <option value="Black">Black Soil (काली मिट्टी)</option>
-                        <option value="Alluvial">Alluvial Soil (जलोढ़ मिट्टी)</option>
-                        <option value="Red">Red Soil (लाल मिट्टी)</option>
-                        <option value="Sandy">Sandy Soil (बलुई मिट्टी)</option>
-                        <option value="Clay">Clay (चिकनी मिट्टी)</option>
-                    </select>
+                    <h3 style="margin-top: 10px; margin-bottom: 15px; font-size: 16px; color: var(--gov-blue); border-bottom: 2px solid var(--gov-blue); padding-bottom: 5px;">Soil & Environment (Optional)</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 12px;">Nitrogen (N)</label>
+                            <input type="number" id="n-value" placeholder="mg/kg" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 12px;">Phosphorus (P)</label>
+                            <input type="number" id="p-value" placeholder="mg/kg" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 12px;">Potassium (K)</label>
+                            <input type="number" id="k-value" placeholder="mg/kg" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
 
-                    <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Farm Size (Acres) / खेत का आकार:</label>
-                    <input type="number" id="farm-size" value="2" min="0.1" step="0.1" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">pH Value</label>
+                            <input type="number" step="0.1" id="ph-value" placeholder="1.0 - 14.0" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Soil Type</label>
+                            <select id="soil-select" onchange="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="Black">Black Soil</option>
+                                <option value="Alluvial">Alluvial Soil</option>
+                                <option value="Red">Red Soil</option>
+                                <option value="Sandy">Sandy Soil</option>
+                                <option value="Clay">Clay</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <label style="display:flex; align-items:center; gap: 8px; margin-bottom: 20px;">
-                        <input type="checkbox" id="irrigation-toggle" checked style="width:auto; margin:0;">
-                        Irrigation Available (सिंचाई उपलब्ध)
-                    </label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Temp (°C)</label>
+                            <input type="number" id="temp-value" placeholder="Auto-fetch" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Humidity (%)</label>
+                            <input type="number" id="humidity-value" placeholder="Auto-fetch" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Rainfall (mm)</label>
+                            <input type="number" id="rainfall-value" placeholder="Auto-fetch" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Soil Moisture (%)</label>
+                            <input type="number" id="moisture-value" placeholder="e.g. 30" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold; font-size: 13px;">Farm Size (Acres):</label>
+                            <input type="number" id="farm-size" value="2" min="0.1" step="0.1" oninput="saveFarmProfile()" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div style="display:flex; align-items:flex-end; padding-bottom: 8px;">
+                            <label style="display:flex; align-items:center; gap: 8px;">
+                                <input type="checkbox" id="irrigation-toggle" checked onchange="saveFarmProfile()" style="width:auto; margin:0;">
+                                <span style="font-size: 13px;">Irrigation Available</span>
+                            </label>
+                        </div>
+                    </div>
 
                     <button class="submit-btn" onclick="getRecommendations()" style="width: 100%; padding: 12px; background: var(--gov-blue); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 15px;">Get Recommendations</button>
+
                 </div>
 
                 <div class="results-panel" id="what-to-grow-results" style="background: white; padding: 20px; border-radius: 8px; min-height: 400px; border: 1px solid #eee;">
@@ -154,7 +230,7 @@
         <div class="chatbot-header">
             <div style="display:flex;align-items:center;gap:10px;">
                 <i class="fa-solid fa-robot"></i>
-                <b>कृषि-मित्र (Chatbot)</b>
+                <b>Krishi-Mitra (Chatbot)</b>
             </div>
             <div style="cursor:pointer;display:flex;gap:10px;align-items:center;">
                 <button id="tts-toggle" onclick="toggleTTS()" style="background:none;border:none;color:white;"><i class="fa-solid fa-volume-xmark"></i></button>
@@ -184,7 +260,7 @@
                 <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
                     <i class="fa-solid fa-wheat-awn" style="font-size:28px;color:#ffd54f;"></i>
                     <div>
-                        <div style="font-size:20px;font-weight:800;letter-spacing:1px;">कृषि-उद्यमी</div>
+                        <div style="font-size:20px;font-weight:800;letter-spacing:1px;">Krishi-Udyami</div>
                         <div style="font-size:11px;opacity:0.75;text-transform:uppercase;letter-spacing:1px;">Krishi-Udyami Portal</div>
                     </div>
                 </div>
@@ -208,7 +284,6 @@
                 <h4 class="footer-col-heading">USEFUL LINKS</h4>
                 <ul class="footer-link-list">
                     <li><a href="index.html">Home Portal</a></li>
-                    <li><a href="crop-analysis.html">Crop Analysis</a></li>
                     <li><a href="advisory.html">AI Advisory</a></li>
                     <li><a href="https://pmkisan.gov.in" target="_blank">PM-KISAN Portal ↗</a></li>
                     <li><a href="https://enam.gov.in" target="_blank">e-NAM Market ↗</a></li>

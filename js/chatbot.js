@@ -37,7 +37,7 @@ function toggleTTS() {
         btn.innerHTML = ttsEnabled
             ? '<i class="fa-solid fa-volume-high"></i>'
             : '<i class="fa-solid fa-volume-xmark"></i>';
-        btn.title = ttsEnabled ? 'TTS चालू (ON)' : 'TTS बंद (OFF)';
+        btn.title = ttsEnabled ? 'TTS ON' : 'TTS OFF';
     }
     if (!ttsEnabled) stopSpeaking();
 }
@@ -46,7 +46,7 @@ function toggleTTS() {
 
 function makeBotBubble(html, rawText) {
     const speakerBtn = `<button onclick="speakText(this.parentElement.dataset.raw)"
-        style="background:none;border:none;cursor:pointer;color:#999;font-size:12px;float:right;padding:0 0 0 6px;" title="सुनें">
+        style="background:none;border:none;cursor:pointer;color:#999;font-size:12px;float:right;padding:0 0 0 6px;" title="Listen">
         <i class="fa-solid fa-volume-up"></i></button>`;
     return `<div class="chat-bubble bot-bubble" data-raw="${(rawText || '').replace(/"/g, '&quot;')}">${speakerBtn}${html}</div>`;
 }
@@ -59,21 +59,12 @@ function initChatbotGreeting() {
 
     const h = new Date().getHours();
     let greeting = '';
-    if (window.currentLang === 'hi') {
-        if (h >= 21 || h < 5)  greeting = 'शुभ रात्रि!';
-        else if (h < 12)       greeting = 'सुप्रभात!';
-        else if (h < 17)       greeting = 'शुभ अपराह्न!';
-        else                   greeting = 'शुभ संध्या!';
-    } else {
-        if (h >= 21 || h < 5)  greeting = 'Good night!';
-        else if (h < 12)       greeting = 'Good morning!';
-        else if (h < 17)       greeting = 'Good afternoon!';
-        else                   greeting = 'Good evening!';
-    }
+    if (h >= 21 || h < 5)  greeting = 'Good night!';
+    else if (h < 12)       greeting = 'Good morning!';
+    else if (h < 17)       greeting = 'Good afternoon!';
+    else                   greeting = 'Good evening!';
 
-    const helpMsg = window.currentLang === 'hi'
-        ? 'नमस्ते, मैं आपकी कैसे सहायता कर सकता हूँ?\n\nमौसम, सिंचाई, कीट नियंत्रण या सरकारी योजनाओं के बारे में पूछें!'
-        : 'Hello, how may I help you?\n\nAsk me about weather impact, irrigation, pest control, or schemes!';
+    const helpMsg = 'Hello, how may I help you?\n\nAsk me about weather impact, irrigation, pest control, or schemes!';
 
     mc.innerHTML = makeBotBubble(greeting, greeting)
                  + makeBotBubble(helpMsg.replace('\n\n', '<br><br>'), helpMsg);
@@ -115,7 +106,7 @@ async function processChatInput() {
 
     try {
         const payloadMessages = [
-            { role: 'user', content: `CRITICAL INSTRUCTION: Respond ONLY in ${window.currentLang === 'hi' ? 'Hindi' : 'English'}. Do not use the other language.` },
+            { role: 'user', content: `CRITICAL INSTRUCTION: Respond ONLY in ${'English'}. Do not use the other language.` },
             ...chatHistory.slice(-10)
         ];
 
@@ -143,7 +134,7 @@ async function processChatInput() {
         const le = document.getElementById(lid);
         if (le) le.remove();
         mc.innerHTML += makeBotBubble(
-            '<span style="color:red;">त्रुटि हुई। (Error, try again.)</span>',
+            '<span style="color:red;">Error, try again.</span>',
             'Error occurred'
         );
     }
@@ -157,14 +148,14 @@ window.generateAiAdvisory = async function() {
     
     // Check if we have weather context
     if (!window.weatherContext) {
-        panel.innerHTML = '<div style="font-size:13px; font-weight:600;">मौसम डेटा की प्रतीक्षा है (Waiting for weather data)</div>';
+        panel.innerHTML = '<div style="font-size:13px; font-weight:600;">Waiting for weather data</div>';
         return;
     }
     
     panel.innerHTML = '<div style="text-align:center;"><i class="fa-solid fa-spinner fa-spin"></i> Generating personalized advice...</div>';
     
     try {
-        const langStr = window.currentLang === 'hi' ? 'Hindi' : 'English';
+        const langStr = 'English';
         const context = { ...window.weatherContext, news: window.newsContext || [] };
         
         const payloadMessages = [
@@ -190,3 +181,17 @@ window.generateAiAdvisory = async function() {
         panel.innerHTML = '<div style="color:red; font-size:13px;">Advisory unavailable. Please try again later.</div>';
     }
 };
+
+window.sendAIAdvisoryQuery = function() {
+    const input = document.getElementById('ai-advisory-input');
+    if(input && input.value.trim()) {
+        const msg = input.value.trim();
+        input.value = '';
+        const cw = document.getElementById('chatbot-window');
+        if(cw && cw.classList.contains('chatbot-hidden')) {
+            toggleChatbot();
+        }
+        sendChatMessage(msg);
+    }
+};
+

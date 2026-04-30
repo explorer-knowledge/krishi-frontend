@@ -15,7 +15,7 @@ const CATEGORY_LABELS = {
 };
 
 async function loadSchemes(category = 'all') {
-  const lang = window.currentLang || 'en';
+  const lang = 'en';
   try {
     const res = await fetch(`${API_BASE}/schemes?lang=${lang}&category=${category}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -52,15 +52,15 @@ function renderSchemeCards(schemes, lang, container) {
       </div>
       <h3 class="scheme-name" style="margin:0 0 10px; font-size:16px; color:#002147;">${s.name}</h3>
       <div class="scheme-benefit" style="margin-bottom:8px;">
-        <span style="font-weight:bold; font-size:12px;">${lang === 'hi' ? 'लाभ:' : 'Benefit:'}</span>
+        <span style="font-weight:bold; font-size:12px;">Benefit:</span>
         <p style="margin:4px 0; font-size:13px; color:#444;">${s.benefit}</p>
       </div>
       <div class="scheme-eligibility" style="margin-bottom:12px;">
-        <span style="font-weight:bold; font-size:12px;">${lang === 'hi' ? 'पात्रता:' : 'Eligibility:'}</span>
+        <span style="font-weight:bold; font-size:12px;">Eligibility:</span>
         <p style="margin:4px 0; font-size:13px; color:#555;">${s.eligibility}</p>
       </div>
       <a href="${s.apply_url}" target="_blank" rel="noopener" style="display:inline-block; background:var(--gov-saffron,#FF8C00); color:#fff; padding:7px 16px; border-radius:4px; text-decoration:none; font-size:13px; font-weight:bold;">
-        ${lang === 'hi' ? 'आवेदन करें →' : 'Apply Now →'}
+        Apply Now →
       </a>
     </div>
   `).join('');
@@ -78,7 +78,7 @@ function renderYojanaList(schemes, lang, container) {
       <div>
         <div style="font-weight:bold; font-size:13px; color:#002147;">${s.name}</div>
         <div style="font-size:12px; color:#555; margin-top:2px;">${s.benefit}</div>
-        <a href="${s.apply_url}" target="_blank" style="font-size:11px; color:var(--gov-blue,#1565c0); text-decoration:none;">${lang === 'hi' ? 'आवेदन करें →' : 'Apply →'}</a>
+        <a href="${s.apply_url}" target="_blank" style="font-size:11px; color:var(--gov-blue,#1565c0); text-decoration:none;">Apply →</a>
       </div>
     </li>
   `).join('');
@@ -86,7 +86,7 @@ function renderYojanaList(schemes, lang, container) {
 
 // Category filter tabs (for schemes.html)
 function initCategoryFilters() {
-  const lang = window.currentLang || 'en';
+  const lang = 'en';
   const tabsContainer = document.getElementById('scheme-tabs');
   if (!tabsContainer) return;
   const categories = Object.keys(CATEGORY_LABELS.en);

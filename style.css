@@ -41,7 +41,7 @@ a:hover {
     margin: 0;
     background-color: var(--content-bg);
     min-height: 100vh;
-    overflow: hidden;
+    overflow: clip; /* clip allows sticky children to work, unlike hidden */
 }
 
 /* Top Navigation Bar */
@@ -142,6 +142,15 @@ a:hover {
     text-decoration: none;
 }
 
+/* Sticky Header Container */
+.sticky-header-container {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background-color: var(--content-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
 /* News Ticker */
 .news-ticker {
     background-color: #fff8e1;
@@ -197,7 +206,7 @@ a:hover {
 
 /* Map Section */
 #farm-map {
-    height: 250px;
+    height: 450px;
     width: 100%;
     border: 1px solid var(--border-grey);
 }
@@ -432,7 +441,7 @@ a:hover {
     justify-content: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10000;
     transition: transform 0.2s;
     border: 3px solid #1565c0;
 }
@@ -449,7 +458,7 @@ a:hover {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
+    z-index: 10000;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -551,16 +560,16 @@ a:hover {
 
 /* Top accessibility bar */
 .top-bar {
-    background-color: #002147;
-    color: rgba(255,255,255,0.85);
+    background-color: rgb(255, 248, 225);
+    color: rgba(0, 0, 0, 0.85);
     font-size: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 20px;
 }
-.top-bar a { color: rgba(255,255,255,0.75); margin: 0 5px; }
-.top-bar a:hover { color: #fff; text-decoration: none; }
+.top-bar a { color: rgba(0, 0, 0, 0.75); margin: 0 5px; }
+.top-bar a:hover { color: #000000; text-decoration: none; }
 
 /* Agmarknet-style header */
 header {
@@ -730,4 +739,33 @@ nav ul li a.active {
     .footer-main-grid { grid-template-columns: 1fr; }
     header { flex-wrap: wrap; gap: 10px; }
     .hero-section { height: 220px; }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.animate-blink {
+    animation: blink 1s step-start infinite;
+    animation-duration: 1s;
+    animation-timing-function: step-start;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: blink;
+    animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+}
+
+.text-\[\#b22222\] {
+    color: #b22222;
+}
+.font-bold {
+    font-weight: bold;
+}
+.uppercase {
+    text-transform: uppercase;
 }

@@ -3,59 +3,9 @@
 // Loaded FIRST by every page. All other modules depend on this.
 // ─────────────────────────────────────────────────────
 
-const API_BASE = 'https://krishi-backend-plfv.onrender.com/api';
+const API_BASE = 'http://localhost:5000/api';
 
-window.currentLang = localStorage.getItem('krishi_lang') || 'hi';
-
-window.setLang = function (lang) {
-    localStorage.setItem('krishi_lang', lang);
-    window.location.reload();
-};
-
-// Auto-translate DOM elements that use the "Hindi (English)" format
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Hook up the top nav buttons
-    document.querySelectorAll('.top-nav-right a').forEach(a => {
-        const t = a.textContent.trim();
-        if (t === 'English') {
-            a.onclick = (e) => { e.preventDefault(); window.setLang('en'); };
-            if (window.currentLang === 'en') a.style.fontWeight = 'bold';
-        }
-        if (t === 'हिन्दी') {
-            a.onclick = (e) => { e.preventDefault(); window.setLang('hi'); };
-            if (window.currentLang === 'hi') a.style.fontWeight = 'bold';
-        }
-    });
-
-    // 2. Walk the DOM and replace "Hindi (English)" strings
-    const regex = /^\s*(.*?)\s*\((.*?[a-zA-Z].*?)\)\s*([|:]?)\s*$/;
-    function processNode(node) {
-        if (node.nodeType === 3) { // Text node
-            const text = node.nodeValue;
-            if (text.includes('(')) {
-                const match = text.match(regex);
-                if (match) {
-                    node.nodeValue = window.currentLang === 'hi'
-                        ? match[1] + (match[3] ? ' ' + match[3] : '')
-                        : match[2] + (match[3] ? ' ' + match[3] : '');
-                }
-            }
-        } else if (node.nodeType === 1 && node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE') {
-            if (node.hasAttribute('placeholder')) {
-                const pText = node.getAttribute('placeholder');
-                const m = pText.match(regex);
-                if (m) node.setAttribute('placeholder', window.currentLang === 'hi' ? m[1] : m[2]);
-            }
-            if (node.hasAttribute('value') && node.tagName === 'INPUT') {
-                const vText = node.getAttribute('value');
-                const m = vText.match(regex);
-                if (m) node.setAttribute('value', window.currentLang === 'hi' ? m[1] : m[2]);
-            }
-            Array.from(node.childNodes).forEach(processNode);
-        }
-    }
-    processNode(document.body);
-});
+// Auto-translate logic removed. Google Translate widget handles it.
 
 // Shared state (attached to window so all modules can access)
 window.weatherContext = null;  // { weather, forecast, agri, location }
@@ -64,3 +14,47 @@ window.farmLat = 23.2599; // Default: Bhopal
 window.farmLng = 77.4126;
 window.detectedState = null;
 window.detectedLocation = null;
+
+// ── MULTILINGUAL GOOGLE TRANSLATE ────────────────────────────────
+function translatePage(langCode) {
+    // Set cookie for google translate
+    document.cookie = `googtrans=/en/${langCode}; path=/;`;
+    document.cookie = `googtrans=/en/${langCode}; path=/; domain=${window.location.hostname}`;
+    window.location.reload();
+}
+
+// Inject Google Translate script dynamically
+document.addEventListener('DOMContentLoaded', () => {
+    // Add translation initialization function
+    window.googleTranslateElementInit = function () {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false,
+            includedLanguages: 'en,hi,mr,bn,pa,ta,te,ml,gu,or,doi,as'
+        }, 'google_translate_element');
+    };
+
+    // Append script
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(script);
+
+    // Hide the Google Translate toolbar that pushes the page down but keep the select visible
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element select {
+            background: var(--gov-blue-light);
+            color: white;
+            border: 1px solid var(--border-grey);
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 12px;
+            outline: none;
+        }
+        .goog-te-gadget { color: rgba(0,0,0,0.6) !important; font-size: 10px; display: flex; align-items: center; gap: 5px; margin-top: 0; }
+    `;
+    document.head.appendChild(style);
+});

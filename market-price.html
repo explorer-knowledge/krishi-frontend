@@ -52,25 +52,71 @@
 
 <body>
     <div class="wrapper">
-        <header class="main-header"
-            style="padding: 12px 25px; border-bottom: 3px solid var(--gov-blue); background: white;">
-            <div class="logo-section" style="text-align: center;">
-                <h1 style="font-size: 2.2rem; margin: 0; color: var(--gov-blue);">कृषि-उद्यमी</h1>
-            </div>
-        </header>
-
-        <nav class="primary-menu">
-            <ul>
-                <li><a href="index.html">मुखपृष्ठ (Home)</a></li>
-                <li><a href="what-to-grow.html">What to Grow?</a></li>
-                <li><a href="market-price.html" class="active">Price of Crops</a></li>
-                <li><a href="advisory.html">AI Advisory</a></li>
-                <li><a href="schemes.html">योजनाएं (Schemes)</a></li>
-            </ul>
-        </nav>
+        <!-- Top Accessibility Nav -->
+        <div class="sticky-header-container">
+        <div class="top-bar">
+                    <div>Krishi-Udyami Platform</div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <a href="javascript:void(0)">The Smurfs</a> |
+                        <div id="google_translate_element"></div>
+                    </div>
+                </div>
+        
+                <header>
+                    <div class="header-left">
+                        <img src="logo.png" alt="Jai Jawan Jai Kisan Logo" class="emblem">
+                        <div class="ministry-info">
+                            <h2>Jai Jawan Jai Kisan</h2>
+                            <p>Digital India | Citizen Service</p>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <button onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
+                            style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
+                                class="fa-solid fa-user"></i> Portal Login</button>
+                    </div>
+                </header>
+        
+                <!-- Primary Menu (bilingual) -->
+                <nav class="primary-menu">
+                    <ul>
+                        <li><a href="index.html" class="">Home</a></li>
+                        <li><a href="what-to-grow.html" class="">What to Grow?</a></li>
+                        <li><a href="market-price.html" class="active">Price of Crops</a></li>
+                        <li><a href="community.html" class="">Farmers Community</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="weather.html">Weather</a></li>
+                        <li><a href="schemes.html" class="">Schemes</a></li>
+                    </ul>
+                </nav>
+        
+                <div class="news-ticker">
+                    <div class="ticker-title">LATEST UPDATE</div>
+                    <div class="ticker-marquee-container">
+                        <marquee behavior="scroll" direction="left" scrollamount="6">
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;PM-KISAN 19th
+                                installment will be released soon. Please complete e-KYC.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;PMFBY Rabi
+                                2025-26 enrollment is ongoing. Check the last date.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Kisan Credit Card
+                                loan at 4% interest — Apply Now.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Soil Health Card
+                                portal updated with new organic farming guidelines.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Subsidy of up to
+                                50% available on solar water pumps under PM-KUSUM.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Minimum Support
+                                Price (MSP) for Wheat increased to ₹2,275 per quintal.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Warning: Heavy
+                                rainfall expected in Central regions; delay harvesting.</span>
+                            <span class="ticker-item"><span class="text-[#b22222] font-bold uppercase animate-blink">• LIVE</span>&nbsp;Apply for
+                                National Horticulture Board (NHB) commercial farming grants.</span>
+                        </marquee>
+                    </div>
+                </div>
+    </div>
 
         <div class="page-header">
-            <h2>Crop Market Prices / मंडी भाव</h2>
+            <h2>Crop Market Prices</h2>
             <p>Real-time wholesale market prices across India</p>
         </div>
 
