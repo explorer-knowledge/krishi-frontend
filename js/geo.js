@@ -79,6 +79,10 @@ function initGeolocation() {
                 window.farmLng = pos.coords.longitude;
                 initMap(pos.coords.latitude, pos.coords.longitude, true);
                 fetchAccuWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
+                // Persist for session + DB sync
+                if (typeof persistLocation === 'function') {
+                    persistLocation(pos.coords.latitude, pos.coords.longitude, null);
+                }
             },
             () => fetchWeatherByIp(),
             { timeout: 8000, maximumAge: 0 }
@@ -102,6 +106,9 @@ function detectGpsLocation() {
             window.farmLng = pos.coords.longitude;
             initMap(pos.coords.latitude, pos.coords.longitude, true);
             fetchAccuWeatherByCoords(pos.coords.latitude, pos.coords.longitude);
+            if (typeof persistLocation === 'function') {
+                persistLocation(pos.coords.latitude, pos.coords.longitude, null);
+            }
             if (btn) btn.disabled = false;
         },
         () => { fetchWeatherByIp(); if (btn) btn.disabled = false; },
@@ -249,13 +256,19 @@ function _selectSuggestion(result) {
     if (input) input.value = '';
     _hideDropdown();
 
-    window.detectedLocation = result.main + (result.sub ? `, ${result.sub}` : '');
+    const locationLabel = result.main + (result.sub ? `, ${result.sub}` : '');
+    window.detectedLocation = locationLabel;
     window.manualPin = false;
     window.farmLat   = result.lat;
     window.farmLng   = result.lng;
 
     initMap(result.lat, result.lng, true);
     fetchAccuWeatherByCoords(result.lat, result.lng);
+
+    // Persist for session + DB sync
+    if (typeof persistLocation === 'function') {
+        persistLocation(result.lat, result.lng, locationLabel);
+    }
 }
 
 /** Fallback: manual submit via button / Enter without selecting suggestion */
@@ -341,6 +354,10 @@ function initMap(lat, lng, isLive = false) {
             if (mapEl) { mapEl.style.outline = '3px solid #4CAF50'; setTimeout(() => mapEl.style.outline = 'none', 500); }
             initMap(lat, lng, true);
             fetchAccuWeatherByCoords(lat, lng);
+            // Persist map-click location
+            if (typeof persistLocation === 'function') {
+                persistLocation(lat, lng, `${lat.toFixed(4)}, ${lng.toFixed(4)}`);
+            }
         });
     } else {
         map.flyTo([lat, lng], zoom, { animate: true, duration: 1.8 });

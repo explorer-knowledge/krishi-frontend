@@ -40,8 +40,7 @@ function renderPriceTable(records, lang) {
       return;
   }
 
-  const headers = lang === 'hi'
-    ['Crop', 'Mandi', 'District', 'Min ₹', 'Max ₹', 'Modal ₹', 'Date'];
+  const headers = ['Crop', 'Mandi', 'District', 'Min ₹', 'Max ₹', 'Modal ₹', 'Date'];
 
   const tbody = records.map(r => `
     <tr>

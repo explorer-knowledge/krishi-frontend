@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <button onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
+                    <button id="portal-login-btn" onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
                         style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
                             class="fa-solid fa-user"></i> Portal Login</button>
                 </div>
@@ -233,11 +233,22 @@
 
     <!-- Scripts -->
     <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/weather.js"></script>
     <script>
-        // On page load, fetch weather by IP to populate the dashboard
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof fetchWeatherByIp === 'function') {
+            // auth.js (loaded before this) already set window.farmLat/Lng from localStorage
+            // Use cached location if available; otherwise fall back to IP detection
+            if (window.farmLat && window.farmLng && 
+                !(window.farmLat === 23.24782 && window.farmLng === 77.50236)) {
+                // Use the previously cached location
+                if (window.detectedLocation) {
+                    const locEl = document.getElementById('accu-location');
+                    if (locEl) locEl.textContent = window.detectedLocation;
+                }
+                fetchAccuWeatherByCoords(window.farmLat, window.farmLng);
+            } else {
+                // No cached location — detect via IP
                 fetchWeatherByIp();
             }
         });

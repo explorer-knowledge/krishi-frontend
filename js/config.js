@@ -10,8 +10,8 @@ const API_BASE = 'http://localhost:5000/api';
 // Shared state (attached to window so all modules can access)
 window.weatherContext = null;  // { weather, forecast, agri, location }
 window.newsContext = null;  // Array of { title, link, publishedAt }
-window.farmLat = 23.2599; // Default: Bhopal
-window.farmLng = 77.4126;
+window.farmLat = 23.24782; // Default: Bhopal
+window.farmLng = 77.50236;
 window.detectedState = null;
 window.detectedLocation = null;
 

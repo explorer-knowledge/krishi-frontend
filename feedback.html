@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <button onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
+                    <button id="portal-login-btn" onclick="document.getElementById('login-modal') ? document.getElementById('login-modal').style.display='flex' : null"
                         style="background:var(--gov-blue); color:white; padding:10px 25px; border:none; border-radius:4px; font-size:15px; font-weight:500; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);"><i
                             class="fa-solid fa-user"></i> Portal Login</button>
                 </div>
@@ -84,20 +84,50 @@
             <p style="font-size:18px;max-width:600px;margin-top:12px;opacity:0.95;">Empowering farmers with modern agricultural technologies and real-time data insights.</p>
         </div>
     </section>
-    <main class="container" style="min-height:50vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
-        <div class="card animate-fade" style="max-width:800px;width:100%;text-align:center;padding:50px 30px;">
-            <i class="fa-solid fa-envelope" style="font-size:64px;color:var(--gov-blue);margin-bottom:20px;"></i>
-            <h1 style="font-size:36px;color:#002147;margin-bottom:15px;">Feedback & Support</h1>
-            <p style="font-size:18px;color:#555;line-height:1.6;margin-bottom:30px;">Contact our developer team. We value your suggestions to improve Krishi-Udyami Portal.</p>
-            <div style="padding:20px;background:#e3f2fd;border-left:4px solid var(--gov-blue);border-radius:4px;text-align:left;">
-                <p style="margin:0;color:#1565c0;font-weight:600;">
-                    <i class="fa-solid fa-person-digging"></i> This module is currently under active development. Check back soon for the full feature release!
-                </p>
+    <main class="container" style="min-height:50vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px; gap: 30px;">
+        
+        <!-- Support Info Card -->
+        <div class="card animate-fade" style="max-width:800px;width:100%;text-align:center;padding:40px 30px;">
+            <i class="fa-solid fa-headset" style="font-size:48px;color:var(--gov-blue);margin-bottom:20px;"></i>
+            <h1 style="font-size:32px;color:#002147;margin-bottom:10px;">Support Contact</h1>
+            <p style="font-size:16px;color:#555;margin-bottom:20px;">Need immediate assistance? Contact our support team.</p>
+            <div style="font-size:18px; font-weight: bold; color: var(--gov-saffron);">
+                <i class="fa-solid fa-envelope"></i> abhishekvi2062005@gmail.com
             </div>
-            <div style="margin-top:30px;">
-                <a href="index.html" style="background:var(--gov-blue);color:white;padding:12px 30px;border-radius:4px;font-weight:700;text-decoration:none;">
-                    <i class="fa-solid fa-arrow-left"></i> Back to Home
-                </a>
+        </div>
+
+        <!-- Feedback Form Card -->
+        <div class="card animate-fade" style="max-width:800px;width:100%;padding:40px 30px; position: relative;" id="feedback-card">
+            <h2 style="font-size:28px;color:#002147;margin-bottom:10px;text-align:center;">Leave Feedback</h2>
+            <p style="font-size:15px;color:#555;margin-bottom:30px;text-align:center;">Your feedback helps us improve Krishi-Udyami Portal.</p>
+            
+            <div id="feedback-form-container" style="display: none;">
+                <form id="feedback-form" onsubmit="submitFeedback(event)">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display:block; margin-bottom: 8px; font-weight: 600; color: #333;">Rate your experience</label>
+                        <select id="feedback-rating" style="width: 100%; padding: 12px; border-radius: 4px; border: 1px solid #ccc; font-size: 15px; outline: none;">
+                            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                            <option value="4">⭐⭐⭐⭐ Good</option>
+                            <option value="3">⭐⭐⭐ Average</option>
+                            <option value="2">⭐⭐ Poor</option>
+                            <option value="1">⭐ Very Poor</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display:block; margin-bottom: 8px; font-weight: 600; color: #333;">Your Message</label>
+                        <textarea id="feedback-message" required rows="5" style="width: 100%; padding: 12px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit; resize: vertical; font-size: 15px; outline: none;" placeholder="Tell us what you liked or how we can improve..."></textarea>
+                    </div>
+                    <button type="submit" id="feedback-submit-btn" style="background: var(--gov-blue); color: white; padding: 12px 24px; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s;">Submit Feedback</button>
+                    <div id="feedback-status" style="margin-top: 15px; text-align: center; font-weight: 600;"></div>
+                </form>
+            </div>
+
+            <!-- Overlay for Unlogged Users -->
+            <div id="feedback-login-prompt" style="text-align:center; padding: 40px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc;">
+                <i class="fa-solid fa-lock" style="font-size:40px; color: #999; margin-bottom: 15px;"></i>
+                <h3 style="margin-bottom: 10px; color: #333; font-size: 22px;">Login Required</h3>
+                <p style="color: #666; margin-bottom: 20px; font-size: 15px;">Please login to submit feedback and suggestions.</p>
+                <button onclick="document.getElementById('login-modal').style.display='flex'" style="background: var(--gov-blue); color: white; padding: 10px 24px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 15px;">Login Now</button>
             </div>
         </div>
     </main>
@@ -167,6 +197,8 @@
     
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/feedback.js"></script>
     <script src="js/chatbot.js"></script>
 </body>
 </html>

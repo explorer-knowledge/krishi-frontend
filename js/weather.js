@@ -42,7 +42,7 @@ async function fetchWeatherByIp() {
         processWeatherResponse(json.data);
     } catch (e) {
         console.error('IP geolocation failed:', e);
-        fetchAccuWeatherByCoords(23.2599, 77.4126); // Default: Bhopal
+        fetchAccuWeatherByCoords(23.24782, 77.50236); // Default: Bhopal
     }
 }
 
